@@ -13,6 +13,7 @@ Section Cross References
     startup.o(.text) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
     startup.o(.text) refers to startup.o(HEAP) for HeapMem
     startup.o(.text) refers to startup.o(STACK) for StackMem
+    switchledinterface.o(i.delay) refers to switchledinterface.o(.data) for in
     switchledinterface.o(i.flash) refers to switchledinterface.o(i.delay) for delay
     switchledinterface.o(i.flash) refers to switchledinterface.o(.data) for out
     switchledinterface.o(i.main) refers to texas.o(i.TExaS_Init) for TExaS_Init
@@ -275,9 +276,9 @@ Image Symbol Table
     i.TExaS_Init                             0x00000734   Section        0  texas.o(i.TExaS_Init)
     i.Timer5A_Handler                        0x000008a8   Section        0  texas.o(i.Timer5A_Handler)
     i.delay                                  0x00000ea4   Section        0  switchledinterface.o(i.delay)
-    i.flash                                  0x00000ebc   Section        0  switchledinterface.o(i.flash)
-    i.main                                   0x00000ef4   Section        0  switchledinterface.o(i.main)
-    .constdata                               0x00000f38   Section     6596  texas.o(.constdata)
+    i.flash                                  0x00000ee8   Section        0  switchledinterface.o(i.flash)
+    i.main                                   0x00000f20   Section        0  switchledinterface.o(i.main)
+    .constdata                               0x00000f84   Section     6596  texas.o(.constdata)
     .data                                    0x20000000   Section        8  switchledinterface.o(.data)
     .data                                    0x20000008   Section       56  texas.o(.data)
     RealGrade                                0x20000018   Data           4  texas.o(.data)
@@ -519,28 +520,28 @@ Image Symbol Table
     SetGrade                                 0x00000669   Thumb Code   196  texas.o(i.SetGrade)
     TExaS_Init                               0x00000735   Thumb Code   248  texas.o(i.TExaS_Init)
     Timer5A_Handler                          0x000008a9   Thumb Code  1510  texas.o(i.Timer5A_Handler)
-    delay                                    0x00000ea5   Thumb Code    20  switchledinterface.o(i.delay)
-    flash                                    0x00000ebd   Thumb Code    44  switchledinterface.o(i.flash)
-    main                                     0x00000ef5   Thumb Code    58  switchledinterface.o(i.main)
-    Port                                     0x00000f38   Data          24  texas.o(.constdata)
-    InputPortMsgA                            0x00000f50   Data          40  texas.o(.constdata)
-    OutputPortMsgA                           0x00000f78   Data          40  texas.o(.constdata)
-    InputPortMsgB                            0x00000fa0   Data          40  texas.o(.constdata)
-    OutputPortMsgB                           0x00000fc8   Data          40  texas.o(.constdata)
-    InputPortMsgE                            0x00000ff0   Data          40  texas.o(.constdata)
-    OutputPortMsgE                           0x00001018   Data          40  texas.o(.constdata)
-    BlankMsg                                 0x00001040   Data          40  texas.o(.constdata)
-    InitializedMsg                           0x00001068   Data          40  texas.o(.constdata)
-    IntroMsg                                 0x00001090   Data          40  texas.o(.constdata)
-    DoneMsg                                  0x000010b8   Data          40  texas.o(.constdata)
-    TestMsg                                  0x000010e0   Data          40  texas.o(.constdata)
-    LabTest                                  0x00001108   Data        5900  texas.o(.constdata)
-    BgTest                                   0x00002814   Data         160  texas.o(.constdata)
-    Key                                      0x000028b4   Data           8  texas.o(.constdata)
-    Scramble                                 0x000028bc   Data          32  texas.o(.constdata)
-    DeScramble                               0x000028dc   Data          32  texas.o(.constdata)
-    Region$$Table$$Base                      0x000028fc   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x0000291c   Number         0  anon$$obj.o(Region$$Table)
+    delay                                    0x00000ea5   Thumb Code    54  switchledinterface.o(i.delay)
+    flash                                    0x00000ee9   Thumb Code    44  switchledinterface.o(i.flash)
+    main                                     0x00000f21   Thumb Code    82  switchledinterface.o(i.main)
+    Port                                     0x00000f84   Data          24  texas.o(.constdata)
+    InputPortMsgA                            0x00000f9c   Data          40  texas.o(.constdata)
+    OutputPortMsgA                           0x00000fc4   Data          40  texas.o(.constdata)
+    InputPortMsgB                            0x00000fec   Data          40  texas.o(.constdata)
+    OutputPortMsgB                           0x00001014   Data          40  texas.o(.constdata)
+    InputPortMsgE                            0x0000103c   Data          40  texas.o(.constdata)
+    OutputPortMsgE                           0x00001064   Data          40  texas.o(.constdata)
+    BlankMsg                                 0x0000108c   Data          40  texas.o(.constdata)
+    InitializedMsg                           0x000010b4   Data          40  texas.o(.constdata)
+    IntroMsg                                 0x000010dc   Data          40  texas.o(.constdata)
+    DoneMsg                                  0x00001104   Data          40  texas.o(.constdata)
+    TestMsg                                  0x0000112c   Data          40  texas.o(.constdata)
+    LabTest                                  0x00001154   Data        5900  texas.o(.constdata)
+    BgTest                                   0x00002860   Data         160  texas.o(.constdata)
+    Key                                      0x00002900   Data           8  texas.o(.constdata)
+    Scramble                                 0x00002908   Data          32  texas.o(.constdata)
+    DeScramble                               0x00002928   Data          32  texas.o(.constdata)
+    Region$$Table$$Base                      0x00002948   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00002968   Number         0  anon$$obj.o(Region$$Table)
     in                                       0x20000000   Data           4  switchledinterface.o(.data)
     out                                      0x20000004   Data           4  switchledinterface.o(.data)
     InPort                                   0x20000008   Data           4  texas.o(.data)
@@ -571,9 +572,9 @@ Memory Map of the image
 
   Image Entry point : 0x0000026d
 
-  Load Region LR_1 (Base: 0x00000000, Size: 0x0000295c, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x00000000, Size: 0x000029a8, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Base: 0x00000000, Size: 0x0000291c, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Base: 0x00000000, Size: 0x00002968, Max: 0xffffffff, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -642,11 +643,11 @@ Memory Map of the image
     0x00000668   0x000000cc   Code   RO           58    i.SetGrade          texas.o
     0x00000734   0x00000174   Code   RO           60    i.TExaS_Init        texas.o
     0x000008a8   0x000005fc   Code   RO           62    i.Timer5A_Handler   texas.o
-    0x00000ea4   0x00000018   Code   RO           13    i.delay             switchledinterface.o
-    0x00000ebc   0x00000038   Code   RO           14    i.flash             switchledinterface.o
-    0x00000ef4   0x00000044   Code   RO           15    i.main              switchledinterface.o
-    0x00000f38   0x000019c4   Data   RO           65    .constdata          texas.o
-    0x000028fc   0x00000020   Data   RO          302    Region$$Table       anon$$obj.o
+    0x00000ea4   0x00000044   Code   RO           13    i.delay             switchledinterface.o
+    0x00000ee8   0x00000038   Code   RO           14    i.flash             switchledinterface.o
+    0x00000f20   0x00000064   Code   RO           15    i.main              switchledinterface.o
+    0x00000f84   0x000019c4   Data   RO           65    .constdata          texas.o
+    0x00002948   0x00000020   Data   RO          302    Region$$Table       anon$$obj.o
 
 
     Execution Region ER_RW (Base: 0x20000000, Size: 0x00000040, Max: 0xffffffff, ABSOLUTE)
@@ -676,11 +677,11 @@ Image component sizes
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
        692        632          0          0       1024        876   startup.o
-       324         64          0          8          0       3325   switchledinterface.o
+       400         82          0          8          0       3341   switchledinterface.o
       2608        298       6596         56        628      15194   texas.o
 
     ----------------------------------------------------------------------
-      3624        994       6628         64       1652      19395   Object Totals
+      3700       1012       6628         64       1652      19411   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          0          0          0          0          0          0   (incl. Padding)
 
@@ -729,15 +730,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      3896       1010       6628         64       1752      19191   Grand Totals
-      3896       1010       6628         64       1752      19191   ELF Image Totals
-      3896       1010       6628         64          0          0   ROM Totals
+      3972       1028       6628         64       1752      19155   Grand Totals
+      3972       1028       6628         64       1752      19155   ELF Image Totals
+      3972       1028       6628         64          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                10524 (  10.28kB)
+    Total RO  Size (Code + RO Data)                10600 (  10.35kB)
     Total RW  Size (RW Data + ZI Data)              1816 (   1.77kB)
-    Total ROM Size (Code + RO Data + RW Data)      10588 (  10.34kB)
+    Total ROM Size (Code + RO Data + RW Data)      10664 (  10.41kB)
 
 ==============================================================================
 

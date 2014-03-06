@@ -67,10 +67,14 @@ int main(void){
 		in = (GPIO_PORTE_DATA_R&0x01); // in 0 if not pressed, 1 if pressed
 		while (in) {
 			flash();
-			in = (GPIO_PORTE_DATA_R&0x01);
+			in = (GPIO_PORTE_DATA_R&0x01); // check switch state
 		}
-  }
+		
+		out = 0x01<<1; // turn LED on when switch not pressed
+		GPIO_PORTE_DATA_R |= out;
+	}
 }
+
 
 // Subroutine to initialize port E pins for input and output
 // PE1 an output and make PE0 an input
@@ -100,9 +104,10 @@ void delay(unsigned long time){
   unsigned long count;
   
   while(time > 0 ) { // repeat while there are still time to delay
-    count = 1538460; // 400000*0.5/0.13 that it takes 0.13 sec to count down to zero
-    while (count > 0) { 
+    count = 250000;
+    while (count > 0 ^ in != 0x01) { // count is alive and swithc is still pressed
       count--;
+			in = GPIO_PORTE_DATA_R&0x01; // check switch state
     } // This while loop takes approximately 3 cycles
     time--;
   }
@@ -113,5 +118,4 @@ void flash(void) {
 	out ^= 1 <<1;   // toggle out
 	GPIO_PORTE_DATA_R = out;
 	delay(1);
-	
 }
