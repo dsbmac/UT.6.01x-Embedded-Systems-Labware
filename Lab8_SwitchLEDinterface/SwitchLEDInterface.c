@@ -33,9 +33,10 @@
 void DisableInterrupts(void); // Disable interrupts
 void EnableInterrupts(void);  // Enable interrupts
 void PortE_Init(void);
-void delay(unsigned long halfsecs);
-unsigned long In; // input from PE0
-unsigned long Out; // output PE1
+void delay(unsigned long time);
+void flash(void);
+unsigned long in; // input from PE0
+unsigned long out; // output PE1
 
 // ***** 3. Subroutines Section *****
 
@@ -59,12 +60,15 @@ int main(void){
 	*/
 	
 	TExaS_Init(SW_PIN_PE0, LED_PIN_PE1);  // activate grader and set system clock to 80 MHz
-	PortE_Init();
   EnableInterrupts();           // enable interrupts for the grader
-	delay(0.2);
+	PortE_Init();
 	
   while(1){
-    
+		in = (GPIO_PORTE_DATA_R&0x01); // in 0 if not pressed, 1 if pressed
+		while (in) {
+			flash();
+			in = (GPIO_PORTE_DATA_R&0x01);
+		}
   }
 }
 
@@ -92,14 +96,22 @@ void PortE_Init(void){ volatile unsigned long delay;
 // Inputs: Number of half seconds to delay
 // Outputs: None
 // Notes: ...
-void delay(unsigned long halfsecs){
+void delay(unsigned long time){
   unsigned long count;
   
-  while(halfsecs > 0 ) { // repeat while there are still halfsecs to delay
+  while(time > 0 ) { // repeat while there are still time to delay
     count = 1538460; // 400000*0.5/0.13 that it takes 0.13 sec to count down to zero
     while (count > 0) { 
       count--;
     } // This while loop takes approximately 3 cycles
-    halfsecs--;
+    time--;
   }
+}
+
+void flash(void) {
+	out = (GPIO_PORTE_DATA_R&0x02);
+	out ^= 1 <<1;   // toggle out
+	GPIO_PORTE_DATA_R = out;
+	delay(1);
+	
 }
