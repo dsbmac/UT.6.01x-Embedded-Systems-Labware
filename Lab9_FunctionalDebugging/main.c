@@ -14,10 +14,20 @@
 
 // ***** 2. Global Declarations Section *****
 
+unsigned long Led;
+unsigned long sw1; // input from PF4
+unsigned long sw2; // input from PF0
+
+// first data point is wrong, the other 49 will be correct
+unsigned long Time[50];
+// you must leave the Data array defined exactly as it is
+unsigned long Data[50];
+
 // FUNCTION PROTOTYPES: Each subroutine defined
 void DisableInterrupts(void); // Disable interrupts
 void EnableInterrupts(void);  // Enable interrupts
 void flash(void); // flashes the led
+void dump(void); // collect data dump
 
 // ***** 3. Subroutines Section *****
 
@@ -62,57 +72,52 @@ void SysTick_Init(void){
   NVIC_ST_CURRENT_R = 0;                // any write to current clears it             
   NVIC_ST_CTRL_R = 0x00000005;          // enable SysTick with core clock
 }
-unsigned long Led;
-unsigned long sw1; // input from PF4
-unsigned long sw2; // input from PF0
 
-// first data point is wrong, the other 49 will be correct
-unsigned long Time[50];
-// you must leave the Data array defined exactly as it is
-unsigned long Data[50];
-
+void dump(void) {
+	unsigned long i,last,now;
+	i = 0;          // array index
+	if(i<50){
+		now = NVIC_ST_CURRENT_R;
+		Time[i] = (last-now)&0x00FFFFFF;  // 24-bit time difference
+		Data[i] = GPIO_PORTF_DATA_R&0x02; // record PF1
+		last = now;
+		i++;
+	}
+}
+	
 void Delay(void){unsigned long volatile time;
-  time = 160000; // 0.1sec
+  time = 8000; // 0.1sec
   while(time){
    time--;
   }
 }
 
 void flash() {
-	unsigned long i,last,now;
-	  i = 0;          // array index
+	unsigned long last;
   last = NVIC_ST_CURRENT_R;
-	    Led = Led^0x02;            // toggle red LED
-    GPIO_PORTF_DATA_R = Led;   // output 
-    if(i<50){
-      now = NVIC_ST_CURRENT_R;
-      Time[i] = (last-now)&0x00FFFFFF;  // 24-bit time difference
-      Data[i] = GPIO_PORTF_DATA_R&0x02; // record PF1
-      last = now;
-      i++;
-    }
-    Delay();
-	
+	Led = Led^0x02;            // toggle red LED
+	GPIO_PORTF_DATA_R = Led;   // output 
+	dump();  
+	Delay();	
 }
 
-
-
 int main(void){  
+	int isChanged = 0;
   TExaS_Init(SW_PIN_PF40, LED_PIN_PF1);  // activate grader and set system clock to 16 MHz
   PortF_Init();   // initialize PF1 to output
   SysTick_Init(); // initialize SysTick, runs at 16 MHz
-
   EnableInterrupts();           // enable interrupts for the grader
 	
 	while(1){
     Led = GPIO_PORTF_DATA_R;   // read previous
-		sw1 = (GPIO_PORTF_DATA_R&0x01); // check switch state
-		sw2 = (GPIO_PORTF_DATA_R&0x05); 
+		sw1 = (GPIO_PORTF_DATA_R&0x10); // check switch state
+		sw2 = (GPIO_PORTF_DATA_R&0x01); 
 		
-		while (sw1 || sw2) {
+		while (!sw1 || !sw2) {
 			flash();
+			sw1 = (GPIO_PORTF_DATA_R&0x10); // check switch state
+			sw2 = (GPIO_PORTF_DATA_R&0x01); 	
 		}
-
   }
 }
 
