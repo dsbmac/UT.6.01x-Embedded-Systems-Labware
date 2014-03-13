@@ -20,8 +20,11 @@ unsigned long sw2; // input from PF0
 
 // first data point is wrong, the other 49 will be correct
 unsigned long Time[50];
+
 // you must leave the Data array defined exactly as it is
 unsigned long Data[50];
+
+unsigned long i,last,now;
 
 // FUNCTION PROTOTYPES: Each subroutine defined
 void DisableInterrupts(void); // Disable interrupts
@@ -36,8 +39,10 @@ This Lab9 starter project is the same as C9_Debugging example but
 includes the connections to the Lab9 grader. You will make three changes. 
 First, make the LED flash at 10 Hz. In other words, make it turn on for 0.05 seconds, 
 and then turn off for 0.05 seconds. 
+
 Second, make the LED flash if either switch SW1 or SW2 are pressed 
 (this means either PF4 or PF0 is 0). 
+
 Third, record PortF bits 4,1,0 every time the input changes or the output changes. 
 For example, if your system detects a change in either PF4 or PF0 input, 
 record PortF bits 4,1,0. If your system causes a change in PF1, record PortF bits 4,1,0. 
@@ -74,46 +79,49 @@ void SysTick_Init(void){
 }
 
 void dump(void) {
-	unsigned long i,last,now;
-	i = 0;          // array index
+	unsigned long data = GPIO_PORTF_DATA_R&0x13;
+	
 	if(i<50){
-		now = NVIC_ST_CURRENT_R;
-		Time[i] = (last-now)&0x00FFFFFF;  // 24-bit time difference
-		Data[i] = GPIO_PORTF_DATA_R&0x02; // record PF1
-		last = now;
-		i++;
+		if (i==0 || Data[i-1] != data) {
+			now = NVIC_ST_CURRENT_R;
+			Time[i] = (last-now)&0x00FFFFFF;  // 24-bit time difference
+			Data[i] = GPIO_PORTF_DATA_R&0x13; // record PortF bits 4,1,0
+			last = now;
+			i++;
+		}
 	}
 }
 	
 void Delay(void){unsigned long volatile time;
-  time = 8000; // 0.1sec
+  time = 72000; // 0.1sec
   while(time){
    time--;
   }
 }
 
 void flash() {
-	unsigned long last;
   last = NVIC_ST_CURRENT_R;
 	Led = Led^0x02;            // toggle red LED
 	GPIO_PORTF_DATA_R = Led;   // output 
-	dump();  
+	dump();
 	Delay();	
 }
 
 int main(void){  
-	int isChanged = 0;
+
   TExaS_Init(SW_PIN_PF40, LED_PIN_PF1);  // activate grader and set system clock to 16 MHz
   PortF_Init();   // initialize PF1 to output
   SysTick_Init(); // initialize SysTick, runs at 16 MHz
   EnableInterrupts();           // enable interrupts for the grader
-	
+	i = 0;          // array index
+
 	while(1){
     Led = GPIO_PORTF_DATA_R;   // read previous
 		sw1 = (GPIO_PORTF_DATA_R&0x10); // check switch state
 		sw2 = (GPIO_PORTF_DATA_R&0x01); 
 		
 		while (!sw1 || !sw2) {
+			dump();
 			flash();
 			sw1 = (GPIO_PORTF_DATA_R&0x10); // check switch state
 			sw2 = (GPIO_PORTF_DATA_R&0x01); 	

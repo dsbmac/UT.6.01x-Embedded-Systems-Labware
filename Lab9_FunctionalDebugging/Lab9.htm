@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Lab9.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Lab9.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Thu Mar 13 17:37:44 2014
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Thu Mar 13 19:16:23 2014
 <BR><P>
 <H3>Maximum Stack Usage =         48 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -683,8 +683,8 @@ Global Symbols
 <P><STRONG><a name="[bd]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[89]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16 + Unknown Stack Size
-<LI>Call Chain = __rt_entry_main &rArr; main &rArr; flash &rArr; dump
+<BR><BR>[Stack]<UL><LI>Max Depth = 12 + Unknown Stack Size
+<LI>Call Chain = __rt_entry_main &rArr; main &rArr; TExaS_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
 <LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -760,13 +760,13 @@ Global Symbols
 
 <P><STRONG><a name="[ca]"></a>__use_no_semihosting_swi</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
 
-<P><STRONG><a name="[9b]"></a>Delay</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, main.o(i.Delay))
+<P><STRONG><a name="[cb]"></a>__semihosting_library_function</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, indicate_semi.o(.text), UNUSED)
+
+<P><STRONG><a name="[9b]"></a>Delay</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, main.o(i.Delay))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Delay
 </UL>
 <BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash
 </UL>
-
-<P><STRONG><a name="[cb]"></a>__semihosting_library_function</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, indicate_semi.o(.text), UNUSED)
 
 <P><STRONG><a name="[98]"></a>EdgeCounter_Init</STRONG> (Thumb, 100 bytes, Stack size 0 bytes, texas.o(i.EdgeCounter_Init))
 <BR><BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TExaS_Init
@@ -827,14 +827,13 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup.o(RESET)
 </UL>
-<P><STRONG><a name="[9a]"></a>dump</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, main.o(i.dump))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = dump
-</UL>
-<BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash
+<P><STRONG><a name="[9a]"></a>dump</STRONG> (Thumb, 110 bytes, Stack size 0 bytes, main.o(i.dump))
+<BR><BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash
 </UL>
 
-<P><STRONG><a name="[99]"></a>flash</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, main.o(i.flash))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = flash &rArr; dump
+<P><STRONG><a name="[99]"></a>flash</STRONG> (Thumb, 42 bytes, Stack size 4 bytes, main.o(i.flash))
+<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = flash &rArr; Delay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dump
 <LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay
@@ -842,12 +841,13 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[8a]"></a>main</STRONG> (Thumb, 110 bytes, Stack size 0 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16 + Unknown Stack Size
-<LI>Call Chain = main &rArr; flash &rArr; dump
+<P><STRONG><a name="[8a]"></a>main</STRONG> (Thumb, 118 bytes, Stack size 0 bytes, main.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 12 + Unknown Stack Size
+<LI>Call Chain = main &rArr; TExaS_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TExaS_Init
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dump
 <LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Init
 <LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PortF_Init
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EnableInterrupts
