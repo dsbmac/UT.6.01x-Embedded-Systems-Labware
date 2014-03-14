@@ -14,7 +14,7 @@
 
 // ***** 2. Global Declarations Section *****
 
-unsigned long Led;
+unsigned long Led; // output to PF1
 unsigned long sw1; // input from PF4
 unsigned long sw2; // input from PF0
 
@@ -93,13 +93,16 @@ void dump(void) {
 }
 	
 void Delay(void){unsigned long volatile time;
-  time = 72000; // 0.1sec
-  while(time){
-   time--;
-  }
+  time = 20000; // 0.1sec
+  while(time & (~sw1 | ~sw2)) { // ensures count is alive and switch is still pressed
+		time--;
+		sw1 = (GPIO_PORTF_DATA_R&0x10); // check switch state
+		sw2 = (GPIO_PORTF_DATA_R&0x01);      
+  }  
 }
 
 void flash() {
+	Led = GPIO_PORTF_DATA_R&0x02;   // read previous
   last = NVIC_ST_CURRENT_R;
 	Led = Led^0x02;            // toggle red LED
 	GPIO_PORTF_DATA_R = Led;   // output 
@@ -109,22 +112,25 @@ void flash() {
 
 int main(void){  
 
-  TExaS_Init(SW_PIN_PF40, LED_PIN_PF1);  // activate grader and set system clock to 16 MHz
+	TExaS_Init(SW_PIN_PF40, LED_PIN_PF1);  // activate grader and set system clock to 16 MHz
   PortF_Init();   // initialize PF1 to output
   SysTick_Init(); // initialize SysTick, runs at 16 MHz
   EnableInterrupts();           // enable interrupts for the grader
 	i = 0;          // array index
 
 	while(1){
-    Led = GPIO_PORTF_DATA_R;   // read previous
+		Led = (GPIO_PORTF_DATA_R&0x02);
+		Led = 0x00<<1; // turn off Led	
+		GPIO_PORTF_DATA_R &= Led;
+		
 		sw1 = (GPIO_PORTF_DATA_R&0x10); // check switch state
 		sw2 = (GPIO_PORTF_DATA_R&0x01); 
 		
 		while (!sw1 || !sw2) {
 			dump();
-			flash();
 			sw1 = (GPIO_PORTF_DATA_R&0x10); // check switch state
-			sw2 = (GPIO_PORTF_DATA_R&0x01); 	
+			sw2 = (GPIO_PORTF_DATA_R&0x01); 
+			flash();
 		}
   }
 }

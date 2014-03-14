@@ -14,11 +14,12 @@ Section Cross References
     startup.o(.text) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
     startup.o(.text) refers to startup.o(HEAP) for HeapMem
     startup.o(.text) refers to startup.o(STACK) for StackMem
+    main.o(i.Delay) refers to main.o(.data) for sw1
     main.o(i.dump) refers to main.o(.data) for i
     main.o(i.dump) refers to main.o(.bss) for Data
     main.o(i.flash) refers to main.o(i.dump) for dump
     main.o(i.flash) refers to main.o(i.Delay) for Delay
-    main.o(i.flash) refers to main.o(.data) for last
+    main.o(i.flash) refers to main.o(.data) for Led
     main.o(i.main) refers to texas.o(i.TExaS_Init) for TExaS_Init
     main.o(i.main) refers to main.o(i.PortF_Init) for PortF_Init
     main.o(i.main) refers to main.o(i.SysTick_Init) for SysTick_Init
@@ -275,20 +276,20 @@ Image Symbol Table
     .text                                    0x000003c0   Section        2  use_no_semi.o(.text)
     .text                                    0x000003c2   Section        0  indicate_semi.o(.text)
     i.Delay                                  0x000003c4   Section        0  main.o(i.Delay)
-    i.EdgeCounter_Init                       0x000003e0   Section        0  texas.o(i.EdgeCounter_Init)
-    i.Encrypt                                0x00000468   Section        0  texas.o(i.Encrypt)
-    i.GPIOPortF_Handler                      0x000004d4   Section        0  texas.o(i.GPIOPortF_Handler)
-    i.PortF_Init                             0x0000053c   Section        0  main.o(i.PortF_Init)
-    i.SetCode                                0x000005b4   Section        0  texas.o(i.SetCode)
-    i.SetCourse                              0x000005cc   Section        0  texas.o(i.SetCourse)
-    i.SetGrade                               0x000005e4   Section        0  texas.o(i.SetGrade)
-    i.SysTick_Init                           0x000006b0   Section        0  main.o(i.SysTick_Init)
-    i.TExaS_Init                             0x000006c8   Section        0  texas.o(i.TExaS_Init)
-    i.Timer5A_Handler                        0x000007f8   Section        0  texas.o(i.Timer5A_Handler)
-    i.dump                                   0x00000ae8   Section        0  main.o(i.dump)
-    i.flash                                  0x00000b70   Section        0  main.o(i.flash)
-    i.main                                   0x00000ba8   Section        0  main.o(i.main)
-    .constdata                               0x00000c38   Section     2680  texas.o(.constdata)
+    i.EdgeCounter_Init                       0x00000418   Section        0  texas.o(i.EdgeCounter_Init)
+    i.Encrypt                                0x000004a0   Section        0  texas.o(i.Encrypt)
+    i.GPIOPortF_Handler                      0x0000050c   Section        0  texas.o(i.GPIOPortF_Handler)
+    i.PortF_Init                             0x00000574   Section        0  main.o(i.PortF_Init)
+    i.SetCode                                0x000005ec   Section        0  texas.o(i.SetCode)
+    i.SetCourse                              0x00000604   Section        0  texas.o(i.SetCourse)
+    i.SetGrade                               0x0000061c   Section        0  texas.o(i.SetGrade)
+    i.SysTick_Init                           0x000006e8   Section        0  main.o(i.SysTick_Init)
+    i.TExaS_Init                             0x00000700   Section        0  texas.o(i.TExaS_Init)
+    i.Timer5A_Handler                        0x00000830   Section        0  texas.o(i.Timer5A_Handler)
+    i.dump                                   0x00000b20   Section        0  main.o(i.dump)
+    i.flash                                  0x00000ba8   Section        0  main.o(i.flash)
+    i.main                                   0x00000bf0   Section        0  main.o(i.main)
+    .constdata                               0x00000c98   Section     2680  texas.o(.constdata)
     .data                                    0x20000000   Section       24  main.o(.data)
     .data                                    0x20000018   Section       56  texas.o(.data)
     RealGrade                                0x20000024   Data           4  texas.o(.data)
@@ -520,41 +521,41 @@ Image Symbol Table
     __I$use$semihosting                      0x000003c1   Thumb Code     0  use_no_semi.o(.text)
     __use_no_semihosting_swi                 0x000003c1   Thumb Code     2  use_no_semi.o(.text)
     __semihosting_library_function           0x000003c3   Thumb Code     0  indicate_semi.o(.text)
-    Delay                                    0x000003c5   Thumb Code    22  main.o(i.Delay)
-    EdgeCounter_Init                         0x000003e1   Thumb Code   100  texas.o(i.EdgeCounter_Init)
-    Encrypt                                  0x00000469   Thumb Code    92  texas.o(i.Encrypt)
-    GPIOPortF_Handler                        0x000004d5   Thumb Code    78  texas.o(i.GPIOPortF_Handler)
-    PortF_Init                               0x0000053d   Thumb Code    88  main.o(i.PortF_Init)
-    SetCode                                  0x000005b5   Thumb Code    20  texas.o(i.SetCode)
-    SetCourse                                0x000005cd   Thumb Code    20  texas.o(i.SetCourse)
-    SetGrade                                 0x000005e5   Thumb Code   196  texas.o(i.SetGrade)
-    SysTick_Init                             0x000006b1   Thumb Code    24  main.o(i.SysTick_Init)
-    TExaS_Init                               0x000006c9   Thumb Code   198  texas.o(i.TExaS_Init)
-    Timer5A_Handler                          0x000007f9   Thumb Code   658  texas.o(i.Timer5A_Handler)
-    dump                                     0x00000ae9   Thumb Code   110  main.o(i.dump)
-    flash                                    0x00000b71   Thumb Code    42  main.o(i.flash)
-    main                                     0x00000ba9   Thumb Code   118  main.o(i.main)
-    Port                                     0x00000c38   Data          24  texas.o(.constdata)
-    InputPortMsg                             0x00000c50   Data          40  texas.o(.constdata)
-    OutputPortMsg                            0x00000c78   Data          40  texas.o(.constdata)
-    BlankMsg                                 0x00000ca0   Data          40  texas.o(.constdata)
-    InitializedMsg                           0x00000cc8   Data          40  texas.o(.constdata)
-    IntroMsg                                 0x00000cf0   Data          40  texas.o(.constdata)
-    DoneMsg                                  0x00000d18   Data          40  texas.o(.constdata)
-    TestMsg                                  0x00000d40   Data          40  texas.o(.constdata)
-    BadBitsMsg                               0x00000d68   Data          40  texas.o(.constdata)
-    BadLEDMsg                                0x00000d90   Data          40  texas.o(.constdata)
-    BadDataMsg                               0x00000db8   Data          40  texas.o(.constdata)
-    BadFastMsg                               0x00000de0   Data          40  texas.o(.constdata)
-    BadSlowMsg                               0x00000e08   Data          40  texas.o(.constdata)
-    GoodTimeMsg                              0x00000e30   Data          40  texas.o(.constdata)
-    GoodDataMsg                              0x00000e58   Data          40  texas.o(.constdata)
-    LabTest                                  0x00000e80   Data        2024  texas.o(.constdata)
-    Key                                      0x00001668   Data           8  texas.o(.constdata)
-    Scramble                                 0x00001670   Data          32  texas.o(.constdata)
-    DeScramble                               0x00001690   Data          32  texas.o(.constdata)
-    Region$$Table$$Base                      0x000016b0   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x000016d0   Number         0  anon$$obj.o(Region$$Table)
+    Delay                                    0x000003c5   Thumb Code    66  main.o(i.Delay)
+    EdgeCounter_Init                         0x00000419   Thumb Code   100  texas.o(i.EdgeCounter_Init)
+    Encrypt                                  0x000004a1   Thumb Code    92  texas.o(i.Encrypt)
+    GPIOPortF_Handler                        0x0000050d   Thumb Code    78  texas.o(i.GPIOPortF_Handler)
+    PortF_Init                               0x00000575   Thumb Code    88  main.o(i.PortF_Init)
+    SetCode                                  0x000005ed   Thumb Code    20  texas.o(i.SetCode)
+    SetCourse                                0x00000605   Thumb Code    20  texas.o(i.SetCourse)
+    SetGrade                                 0x0000061d   Thumb Code   196  texas.o(i.SetGrade)
+    SysTick_Init                             0x000006e9   Thumb Code    24  main.o(i.SysTick_Init)
+    TExaS_Init                               0x00000701   Thumb Code   198  texas.o(i.TExaS_Init)
+    Timer5A_Handler                          0x00000831   Thumb Code   658  texas.o(i.Timer5A_Handler)
+    dump                                     0x00000b21   Thumb Code   110  main.o(i.dump)
+    flash                                    0x00000ba9   Thumb Code    56  main.o(i.flash)
+    main                                     0x00000bf1   Thumb Code   144  main.o(i.main)
+    Port                                     0x00000c98   Data          24  texas.o(.constdata)
+    InputPortMsg                             0x00000cb0   Data          40  texas.o(.constdata)
+    OutputPortMsg                            0x00000cd8   Data          40  texas.o(.constdata)
+    BlankMsg                                 0x00000d00   Data          40  texas.o(.constdata)
+    InitializedMsg                           0x00000d28   Data          40  texas.o(.constdata)
+    IntroMsg                                 0x00000d50   Data          40  texas.o(.constdata)
+    DoneMsg                                  0x00000d78   Data          40  texas.o(.constdata)
+    TestMsg                                  0x00000da0   Data          40  texas.o(.constdata)
+    BadBitsMsg                               0x00000dc8   Data          40  texas.o(.constdata)
+    BadLEDMsg                                0x00000df0   Data          40  texas.o(.constdata)
+    BadDataMsg                               0x00000e18   Data          40  texas.o(.constdata)
+    BadFastMsg                               0x00000e40   Data          40  texas.o(.constdata)
+    BadSlowMsg                               0x00000e68   Data          40  texas.o(.constdata)
+    GoodTimeMsg                              0x00000e90   Data          40  texas.o(.constdata)
+    GoodDataMsg                              0x00000eb8   Data          40  texas.o(.constdata)
+    LabTest                                  0x00000ee0   Data        2024  texas.o(.constdata)
+    Key                                      0x000016c8   Data           8  texas.o(.constdata)
+    Scramble                                 0x000016d0   Data          32  texas.o(.constdata)
+    DeScramble                               0x000016f0   Data          32  texas.o(.constdata)
+    Region$$Table$$Base                      0x00001710   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00001730   Number         0  anon$$obj.o(Region$$Table)
     Led                                      0x20000000   Data           4  main.o(.data)
     sw1                                      0x20000004   Data           4  main.o(.data)
     sw2                                      0x20000008   Data           4  main.o(.data)
@@ -590,9 +591,9 @@ Memory Map of the image
 
   Image Entry point : 0x0000026d
 
-  Load Region LR_1 (Base: 0x00000000, Size: 0x00001720, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x00000000, Size: 0x00001780, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Base: 0x00000000, Size: 0x000016d0, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Base: 0x00000000, Size: 0x00001730, Max: 0xffffffff, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -651,22 +652,22 @@ Memory Map of the image
     0x000003c0   0x00000002   Code   RO          274    .text               c_w.l(use_no_semi.o)
     0x000003c2   0x00000000   Code   RO          276    .text               c_w.l(indicate_semi.o)
     0x000003c2   0x00000002   PAD
-    0x000003c4   0x0000001c   Code   RO           12    i.Delay             main.o
-    0x000003e0   0x00000088   Code   RO           66    i.EdgeCounter_Init  texas.o
-    0x00000468   0x0000006c   Code   RO           67    i.Encrypt           texas.o
-    0x000004d4   0x00000068   Code   RO           68    i.GPIOPortF_Handler  texas.o
-    0x0000053c   0x00000078   Code   RO           13    i.PortF_Init        main.o
-    0x000005b4   0x00000018   Code   RO           71    i.SetCode           texas.o
-    0x000005cc   0x00000018   Code   RO           72    i.SetCourse         texas.o
-    0x000005e4   0x000000cc   Code   RO           73    i.SetGrade          texas.o
-    0x000006b0   0x00000018   Code   RO           14    i.SysTick_Init      main.o
-    0x000006c8   0x00000130   Code   RO           75    i.TExaS_Init        texas.o
-    0x000007f8   0x000002f0   Code   RO           77    i.Timer5A_Handler   texas.o
-    0x00000ae8   0x00000088   Code   RO           15    i.dump              main.o
-    0x00000b70   0x00000038   Code   RO           16    i.flash             main.o
-    0x00000ba8   0x00000090   Code   RO           17    i.main              main.o
-    0x00000c38   0x00000a78   Data   RO           80    .constdata          texas.o
-    0x000016b0   0x00000020   Data   RO          328    Region$$Table       anon$$obj.o
+    0x000003c4   0x00000054   Code   RO           12    i.Delay             main.o
+    0x00000418   0x00000088   Code   RO           66    i.EdgeCounter_Init  texas.o
+    0x000004a0   0x0000006c   Code   RO           67    i.Encrypt           texas.o
+    0x0000050c   0x00000068   Code   RO           68    i.GPIOPortF_Handler  texas.o
+    0x00000574   0x00000078   Code   RO           13    i.PortF_Init        main.o
+    0x000005ec   0x00000018   Code   RO           71    i.SetCode           texas.o
+    0x00000604   0x00000018   Code   RO           72    i.SetCourse         texas.o
+    0x0000061c   0x000000cc   Code   RO           73    i.SetGrade          texas.o
+    0x000006e8   0x00000018   Code   RO           14    i.SysTick_Init      main.o
+    0x00000700   0x00000130   Code   RO           75    i.TExaS_Init        texas.o
+    0x00000830   0x000002f0   Code   RO           77    i.Timer5A_Handler   texas.o
+    0x00000b20   0x00000088   Code   RO           15    i.dump              main.o
+    0x00000ba8   0x00000048   Code   RO           16    i.flash             main.o
+    0x00000bf0   0x000000a8   Code   RO           17    i.main              main.o
+    0x00000c98   0x00000a78   Data   RO           80    .constdata          texas.o
+    0x00001710   0x00000020   Data   RO          328    Region$$Table       anon$$obj.o
 
 
     Execution Region ER_RW (Base: 0x20000000, Size: 0x00000050, Max: 0xffffffff, ABSOLUTE)
@@ -696,12 +697,12 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       508        104          0         24        400       4357   main.o
+       604        116          0         24        400       4373   main.o
        692        632          0          0       1024        876   startup.o
       1656        294       2680         56        116      16782   texas.o
 
     ----------------------------------------------------------------------
-      2856       1030       2712         80       1540      22015   Object Totals
+      2952       1042       2712         80       1540      22031   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          0          0          0          0          0          0   (incl. Padding)
 
@@ -750,15 +751,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      3128       1046       2712         80       1640      21759   Grand Totals
-      3128       1046       2712         80       1640      21759   ELF Image Totals
-      3128       1046       2712         80          0          0   ROM Totals
+      3224       1058       2712         80       1640      21723   Grand Totals
+      3224       1058       2712         80       1640      21723   ELF Image Totals
+      3224       1058       2712         80          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 5840 (   5.70kB)
+    Total RO  Size (Code + RO Data)                 5936 (   5.80kB)
     Total RW  Size (RW Data + ZI Data)              1720 (   1.68kB)
-    Total ROM Size (Code + RO Data + RW Data)       5920 (   5.78kB)
+    Total ROM Size (Code + RO Data + RW Data)       6016 (   5.88kB)
 
 ==============================================================================
 

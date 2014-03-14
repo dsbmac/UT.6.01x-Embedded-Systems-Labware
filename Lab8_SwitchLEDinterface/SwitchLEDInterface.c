@@ -105,7 +105,7 @@ void delay(unsigned long time){
   
   while(time > 0 ) { // repeat while there are still time to delay
     count = 250000;
-    while (count > 0 ^ in != 0x01) { // count is alive and swithc is still pressed
+    while (count > 0 ^ in != 0x01) { // ensures count is alive and switch is still pressed
       count--;
 			in = GPIO_PORTE_DATA_R&0x01; // check switch state
     } // This while loop takes approximately 3 cycles
