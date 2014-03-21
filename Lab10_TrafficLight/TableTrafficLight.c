@@ -22,10 +22,33 @@
 #include "tm4c123gh6pm.h"
 
 // ***** 2. Global Declarations Section *****
+struct State {
+	unsigned char out; // output for the state
+	unsigned short wait;  // Time to wait for light
+	#define char next[1];  // next state array
+};
+
+typedef const struct State StateType;
+
+#define GoWest 0    // West light green
+#define SlowWest 1  // West light yellow
+#define GoSouth 2   // South light green
+#define SlowSouth 3 // South light yellow
+#define Walk 4      // Pedestrian Walk
+#define DontWalk 5  // Pedestrian Dont Walk
+#define AllStop 6   // All traffic red and no pedestrians
+
+// Data structure that captures the FSM state transition graph
+StateType Fsm[2] = {
+	{0, 100, {GoWest, SlowWest}},
+	{1, 100, {GoSouth, SlowSouth}}
+};
 
 // FUNCTION PROTOTYPES: Each subroutine defined
 void DisableInterrupts(void); // Disable interrupts
 void EnableInterrupts(void);  // Enable interrupts
+
+
 
 // ***** 3. Subroutines Section *****
 
