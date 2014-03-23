@@ -235,7 +235,7 @@ eÔzr°ö)</Name>
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>272</TopLine>
+      <TopLine>273</TopLine>
       <CurrentLine>277</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\startup.s</PathWithFileName>
@@ -251,8 +251,8 @@ eÔzr°ö)</Name>
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>95</TopLine>
-      <CurrentLine>118</CurrentLine>
+      <TopLine>85</TopLine>
+      <CurrentLine>19</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\SwitchLEDInterface.c</PathWithFileName>
       <FilenameWithoutPath>SwitchLEDInterface.c</FilenameWithoutPath>

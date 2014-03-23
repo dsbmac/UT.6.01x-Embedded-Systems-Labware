@@ -32,7 +32,7 @@
 // FUNCTION PROTOTYPES: Each subroutine defined
 void DisableInterrupts(void); // Disable interrupts
 void EnableInterrupts(void);  // Enable interrupts
-void PortE_Init(void);
+void PortE_Init(void); // Port E initialization
 void delay(unsigned long time);
 void flash(void);
 unsigned long in; // input from PE0
