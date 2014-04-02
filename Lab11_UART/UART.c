@@ -28,6 +28,9 @@
 
 #include "tm4c123gh6pm.h"
 #include "UART.h"
+#include <stdio.h>
+#include <string.h>
+
 
 //------------UART_Init------------
 // Initialize the UART for 115200 baud rate (assuming 80 MHz UART clock),
@@ -35,8 +38,8 @@
 // Input: none
 // Output: none
 void UART_Init(void){
-// as part of Lab 11, modify this program to use UART0 instead of UART1
-//                 switching from PC5,PC4 to PA1,PA0
+
+	//                 switching from PC5,PC4 to PA1,PA0
   SYSCTL_RCGC1_R |= SYSCTL_RCGC1_UART0; // activate UART0
   SYSCTL_RCGC2_R |= SYSCTL_RCGC2_GPIOA; // activate port A
   UART0_CTL_R &= ~UART_CTL_UARTEN;      // disable UART
@@ -57,7 +60,6 @@ void UART_Init(void){
 // Input: none
 // Output: ASCII code for key typed
 unsigned char UART_InChar(void){
-// as part of Lab 11, modify this program to use UART0 instead of UART1
   while((UART0_FR_R&UART_FR_RXFE) != 0);
   return((unsigned char)(UART0_DR_R&0xFF));
 }
@@ -68,11 +70,10 @@ unsigned char UART_InChar(void){
 // Input: none
 // Output: ASCII code for key typed or 0 if no character
 unsigned char UART_InCharNonBlocking(void){
-// as part of Lab 11, modify this program to use UART0 instead of UART1
   if((UART0_FR_R&UART_FR_RXFE) == 0){
     return((unsigned char)(UART0_DR_R&0xFF));
   } else{
-    return 0;
+    return (unsigned char) 0;
   }
 }
 
@@ -81,7 +82,6 @@ unsigned char UART_InCharNonBlocking(void){
 // Input: letter is an 8-bit ASCII character to be transferred
 // Output: none
 void UART_OutChar(unsigned char data){
-// as part of Lab 11, modify this program to use UART0 instead of UART1
   while((UART0_FR_R&UART_FR_TXFF) != 0);
   UART0_DR_R = data;
 }
@@ -127,6 +127,8 @@ void UART_OutString(unsigned char buffer[]){
 }
 
 unsigned char String[10];
+
+
 //-----------------------UART_ConvertUDec-----------------------
 // Converts a 32-bit number in unsigned decimal format
 // Input: 32-bit number to be transferred
@@ -138,9 +140,27 @@ unsigned char String[10];
 //  102 to " 102 " 
 // 2210 to "2210 "
 //10000 to "**** "  any value larger than 9999 converted to "**** "
+
 void UART_ConvertUDec(unsigned long n){
-// as part of Lab 11 implement this function
-  
+	// as part of Lab 11 implement this function
+	unsigned char nString[5];
+	
+	if (n >= 10000) {
+		String[0] = '*';
+		String[1] = '*';
+		String[2] = '*';
+		String[3] = '*';
+		String[4] = 0;
+	}
+	else {
+		String[0] = n/1000 + 0x30; // thousands digit
+		String[1] = n/100 + 0x30; // hundreds digit
+		n = n%100;              // n is now between 0 and 99
+		String[2] = n/10 + 0x30;  // tens digit
+		n = n%10;               // n is now between 0 and 9
+		String[3] = n + 0x30;     // ones digit
+		String[4] = 0;            // null termination
+	}
 }
 
 //-----------------------UART_OutUDec-----------------------

@@ -12,7 +12,7 @@
 // north/south facing yellow light connected to PB1
 // north/south facing green light connected to PB0
 // pedestrian detector connected to PE2 (1=pedestrian present)
-// north/south car detector connected to PE1 (1=car present)
+// north/south car detector connected to PE1 (1=car present) 
 // east/west car detector connected to PE0 (1=car present)
 // "walk" light connected to PF3 (built-in green LED)
 // "don't walk" light connected to PF1 (built-in red LED)
@@ -20,10 +20,10 @@
 // ***** 1. Pre-processor Directives Section *****
 #include "TExaS.h"
 #include "tm4c123gh6pm.h"
-#include "PLL.h"
+//#include "PLL.h"
 
 // ***** 2. Global Declarations Section *****
-const unsigned long SIM_FACTOR = 1;
+const unsigned long SIM_FACTOR = 2;
 const unsigned long GREEN_DELAY = 30 * SIM_FACTOR;
 const unsigned long YELLOW_DELAY = 5 * SIM_FACTOR;
 const unsigned long WALK_DELAY = 10 * SIM_FACTOR;
@@ -194,7 +194,7 @@ void SysTick_Wait10ms(unsigned long delay){
 
 
  int main(void){ volatile unsigned long delay;
-  PLL_Init();       // 80 MHz, Program 10.1
+  //PLL_Init();       // 80 MHz, Program 10.1
   SysTick_Init();   // Program 10.2
 	PortF_Init();
 	PortB_E_Init(); // Sensors and lights
