@@ -3,7 +3,7 @@
 // Periodic timer Timer5A which will interact with debugger and grade the lab 
 // It initializes on reset and runs whenever interrupts are enabled
 // Jonathan Valvano
-// November 10, 2013
+// December 3, 2013
 
 /* This example accompanies the book
    "Embedded Systems: Real Time Operating Systems for ARM Cortex M Microcontrollers",
@@ -22,12 +22,26 @@
  http://users.ece.utexas.edu/~valvano/
  */
 
+// IMPORTANT: These enumerated types are specific to Lab 10.
+enum InputPorts{
+  SW_PIN_PA432 = 0,
+  SW_PIN_PB210 = 1,
+  SW_PIN_PE210 = 4
+};
+
+enum OutputPorts{
+  LED_PIN_PA765432 = 0,
+  LED_PIN_PB543210 = 1,
+  LED_PIN_PE543210 = 4
+};
+
 // ************TExaS_Init*****************
 // Initialize grader, triggered by timer 5A
 // This needs to be called once 
-// Inputs:  none
+// Inputs: iport input(s) connected to this port
+//         oport output(s) connected to this port
 // Outputs: none
-void TExaS_Init(void);
+void TExaS_Init(enum InputPorts iport, enum OutputPorts oport);
 
 // ************TExaS_Stop*****************
 // Stop the transfer 

@@ -20,10 +20,9 @@
 // ***** 1. Pre-processor Directives Section *****
 #include "TExaS.h"
 #include "tm4c123gh6pm.h"
-//#include "PLL.h"
 
 // ***** 2. Global Declarations Section *****
-const unsigned long SIM_FACTOR = 2;
+const unsigned long SIM_FACTOR = 20; // this will change the length of all delays
 const unsigned long GREEN_DELAY = 30 * SIM_FACTOR;
 const unsigned long YELLOW_DELAY = 5 * SIM_FACTOR;
 const unsigned long WALK_DELAY = 10 * SIM_FACTOR;
@@ -194,7 +193,8 @@ void SysTick_Wait10ms(unsigned long delay){
 
 
  int main(void){ volatile unsigned long delay;
-  //PLL_Init();       // 80 MHz, Program 10.1
+	TExaS_Init(SW_PIN_PE210, LED_PIN_PB543210); // activate grader and set system clock to 80 MHz
+  EnableInterrupts();
   SysTick_Init();   // Program 10.2
 	PortF_Init();
 	PortB_E_Init(); // Sensors and lights

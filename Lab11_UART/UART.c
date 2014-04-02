@@ -143,14 +143,9 @@ unsigned char String[10];
 
 void UART_ConvertUDec(unsigned long n){
 	// as part of Lab 11 implement this function
-	unsigned char nString[5];
 	
 	if (n >= 10000) {
-		String[0] = '*';
-		String[1] = '*';
-		String[2] = '*';
-		String[3] = '*';
-		String[4] = 0;
+		String[0] = (unsigned char) "**** ";
 	}
 	else {
 		String[0] = n/1000 + 0x30; // thousands digit
@@ -159,7 +154,8 @@ void UART_ConvertUDec(unsigned long n){
 		String[2] = n/10 + 0x30;  // tens digit
 		n = n%10;               // n is now between 0 and 9
 		String[3] = n + 0x30;     // ones digit
-		String[4] = 0;            // null termination
+		String[4] = ' ';
+		String[5] = 0;            // null termination
 	}
 }
 
