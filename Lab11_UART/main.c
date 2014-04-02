@@ -19,13 +19,13 @@ int main(void){ unsigned long n;
   UART_Init();              // initialize UART
   EnableInterrupts();       // needed for TExaS
   UART_OutString("Running Lab 11");
-	while(1){
+  while(1){
     UART_OutString("\n\rInput:");
-		n = UART_InUDec();
-		UART_OutString(" UART_OutUDec = ");
-		UART_OutUDec(n);     // your function
-		UART_OutString(",  UART_OutDistance ~ ");
-		UART_OutDistance(n); // your function
-	}
+    n = UART_InUDec();
+    UART_OutString(" UART_OutUDec = ");
+    UART_OutUDec(n);     // your function
+    UART_OutString(",  UART_OutDistance ~ ");
+    UART_OutDistance(n); // your function
+  }
 }
 

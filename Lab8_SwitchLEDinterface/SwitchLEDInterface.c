@@ -17,26 +17,9 @@
 
 // ***** 2. Global Declarations Section *****
 
-// Constant declarations to access port registers using 
-// symbolic names instead of addresses
-#define GPIO_PORTE_DATA_R       (*((volatile unsigned long *)0x400243FC))
-#define GPIO_PORTE_DIR_R        (*((volatile unsigned long *)0x40024400))
-#define GPIO_PORTE_AFSEL_R      (*((volatile unsigned long *)0x40024420))
-#define GPIO_PORTE_DEN_R        (*((volatile unsigned long *)0x4002451C))
-#define GPIO_PORTE_LOCK_R       (*((volatile unsigned long *)0x40024520))
-#define GPIO_PORTE_CR_R         (*((volatile unsigned long *)0x40024524))
-#define GPIO_PORTE_AMSEL_R      (*((volatile unsigned long *)0x40024528))
-#define GPIO_PORTE_PCTL_R       (*((volatile unsigned long *)0x4002452C))
-#define SYSCTL_RCGC2_R          (*((volatile unsigned long *)0x400FE108))
-
 // FUNCTION PROTOTYPES: Each subroutine defined
 void DisableInterrupts(void); // Disable interrupts
 void EnableInterrupts(void);  // Enable interrupts
-void PortE_Init(void); // Port E initialization
-void delay(unsigned long time);
-void flash(void);
-unsigned long in; // input from PE0
-unsigned long out; // output PE1
 
 // ***** 3. Subroutines Section *****
 
@@ -49,73 +32,12 @@ int main(void){
 //**********************************************************************
 // The following version tests input on PE0 and output on PE1
 //**********************************************************************
-
-	/*
-	pseudocode
-	1) Make PE1 an output and make PE0 an input. 
-	2) The system starts with the LED on (make PE1 =1). 
-	3) Wait about 100 ms
-	4) If the switch is pressed (PE0 is 1), then toggle the LED once, else turn the LED on. 
-	5) Steps 3 and 4 are repeated over and over.
-	*/
-	
-	TExaS_Init(SW_PIN_PE0, LED_PIN_PE1);  // activate grader and set system clock to 80 MHz
-  EnableInterrupts();           // enable interrupts for the grader
-	PortE_Init();
-	
-  while(1){
-		in = (GPIO_PORTE_DATA_R&0x01); // in 0 if not pressed, 1 if pressed
-		while (in) {
-			flash();
-			in = (GPIO_PORTE_DATA_R&0x01); // check switch state
-		}
-		
-		out = 0x01<<1; // turn LED on when switch not pressed
-		GPIO_PORTE_DATA_R |= out;
-	}
-}
-
-
-// Subroutine to initialize port E pins for input and output
-// PE1 an output and make PE0 an input
-
-void PortE_Init(void){ volatile unsigned long delay;
-  SYSCTL_RCGC2_R |= 0x00000010;     // 1) E clock
-  delay = SYSCTL_RCGC2_R;           // delay   
-  GPIO_PORTE_LOCK_R = 0x4C4F434B;   // 2) unlock PortE PE0  
-  GPIO_PORTE_CR_R |= 0x1F;           // allow changes to PE4-0       
-  GPIO_PORTE_AMSEL_R &= 0x00;        // 3) disable analog function
-  GPIO_PORTE_PCTL_R &= 0x00000000;   // 4) GPIO clear bit PCTL  
-  GPIO_PORTE_DIR_R &= ~0x01;          // 5.1) PE0 input 
-  GPIO_PORTE_DIR_R |= 0x02;          // 5.2) PE1 output  
-  GPIO_PORTE_AFSEL_R &= 0x00;        // 6) no alternate function
-  GPIO_PORTE_DEN_R |= 0x1F;          // 7) enable digital pins PF4-PF0     
-	GPIO_PORTE_DATA_R |= 0x02;          // 7) make PE1 = 1
-}
-
-// Subroutine to delay in units of half seconds
-// We will make a precise estimate later: 
-//   For now we assume it takes 1/2 sec to count down
-//   from 2,000,000 down to zero
-// Inputs: Number of half seconds to delay
-// Outputs: None
-// Notes: ...
-void delay(unsigned long time){
-  unsigned long count;
+  TExaS_Init(SW_PIN_PE0, LED_PIN_PE1);  // activate grader and set system clock to 80 MHz
   
-  while(time > 0 ) { // repeat while there are still time to delay
-    count = 250000;
-    while (count > 0 ^ in != 0x01) { // ensures count is alive and switch is still pressed
-      count--;
-			in = GPIO_PORTE_DATA_R&0x01; // check switch state
-    } // This while loop takes approximately 3 cycles
-    time--;
+	
+  EnableInterrupts();           // enable interrupts for the grader
+  while(1){
+    
   }
-}
-
-void flash(void) {
-	out = (GPIO_PORTE_DATA_R&0x02);
-	out ^= 1 <<1;   // toggle out
-	GPIO_PORTE_DATA_R = out;
-	delay(1);
+  
 }

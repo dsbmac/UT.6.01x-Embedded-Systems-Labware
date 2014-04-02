@@ -28,21 +28,20 @@
 
 #include "tm4c123gh6pm.h"
 #include "UART.h"
-#include <stdio.h>
 #include <string.h>
 
+
 // Function Prototypes
-unsigned char parseDigit(unsigned long n, int place);
+unsigned char parseDigit(unsigned long n, int place, int leadingZero);
 
-
+	
 //------------UART_Init------------
 // Initialize the UART for 115200 baud rate (assuming 80 MHz UART clock),
 // 8 bit word length, no parity bits, one stop bit, FIFOs enabled
 // Input: none
 // Output: none
 void UART_Init(void){
-
-	//                 switching from PC5,PC4 to PA1,PA0
+//                 switching from PC5,PC4 to PA1,PA0
   SYSCTL_RCGC1_R |= SYSCTL_RCGC1_UART0; // activate UART0
   SYSCTL_RCGC2_R |= SYSCTL_RCGC2_GPIOA; // activate port A
   UART0_CTL_R &= ~UART_CTL_UARTEN;      // disable UART
@@ -76,7 +75,7 @@ unsigned char UART_InCharNonBlocking(void){
   if((UART0_FR_R&UART_FR_RXFE) == 0){
     return((unsigned char)(UART0_DR_R&0xFF));
   } else{
-    return (unsigned char) 0;
+    return 0;
   }
 }
 
@@ -133,14 +132,6 @@ void UART_OutString(unsigned char buffer[]){
 }
 
 unsigned char String[10];
-
-//void UART_OutString(char *pt){
-//  while(*pt){
-//    UART_OutChar(*pt);
-//    pt++;
-//  }
-//}
-
 //-----------------------UART_ConvertUDec-----------------------
 // Converts a 32-bit number in unsigned decimal format
 // Input: 32-bit number to be transferred
@@ -152,31 +143,26 @@ unsigned char String[10];
 //  102 to " 102 " 
 // 2210 to "2210 "
 //10000 to "**** "  any value larger than 9999 converted to "**** "
-
 void UART_ConvertUDec(unsigned long n){
 	// as part of Lab 11 implement this function
-	
+
 	if (n >= 10000) {
-		strcpy((char *) String, "**** ");
-		//String[0] = (unsigned char) ("***");
+		strcpy((char *) String, "****");
 	}
 	else {
-		String[0] = parseDigit(n,1000);  // thousands digit
-	  //n = n%1000;                      // n is now between 0 and 999
-		String[1] = parseDigit(n,100);   // hundreds digit
-		//n = n%100;                       // n is now between 0 and 99
-		String[2] = parseDigit(n,10);    // tens digit
-		//n = n%10;                        // n is now between 0 and 9
-		String[3] = parseDigit(n, 1);       // ones digit
-		String[4] = 0x20;                // add a space at the end
-		String[5] = 0;                   // null termination
+		String[0] = parseDigit(n,1000,0);  // thousands digit
+		String[1] = parseDigit(n,100,0);   // hundreds digit
+		String[2] = parseDigit(n,10,0);    // tens digit
+		String[3] = parseDigit(n, 1,0);       // ones digit
 	}
+	String[4] = 0x20;                // add a space at the end
+	String[5] = 0;                   // null termination
 }
 
-unsigned char parseDigit(unsigned long n, int place){	
+unsigned char parseDigit(unsigned long n, int place, int leadingZero){	
 	int numHasStarted = place < n;
 	unsigned char digit = n % (place*10) / place;             
-	return digit + 0x20 + ((( digit > 0) || numHasStarted) * 0x10); 
+	return digit + 0x20 + ((( digit > 0) || numHasStarted || leadingZero || place==1) * 0x10); 
 }
 
 //-----------------------UART_OutUDec-----------------------
@@ -189,7 +175,6 @@ void UART_OutUDec(unsigned long n){
   UART_OutString(String);  // output using your function
 }
 
-
 //-----------------------UART_ConvertDistance-----------------------
 // Converts a 32-bit distance into an ASCII string
 // Input: 32-bit number to be converted (resolution 0.001cm)
@@ -201,11 +186,21 @@ void UART_OutUDec(unsigned long n){
 //  102 to "0.102 cm" 
 // 2210 to "2.210 cm"
 //10000 to "*.*** cm"  any value larger than 9999 converted to "*.*** cm"
-
 void UART_ConvertDistance(unsigned long n){
 // as part of Lab 11 implement this function
-  
+		if (n >= 10000) {
+		strcpy((char *) String, "*.***");
+	}
+	else {
+		String[0] = parseDigit(n,1000,1);  // thousands digit
+		String[1] = '.';
+		String[2] = parseDigit(n,100,1);   // hundreds digit
+		String[3] = parseDigit(n,10,1);    // tens digit
+		String[4] = parseDigit(n, 1,1);       // ones digit
+	}
+	strcat((char *) String, " cm");
 }
+  
 
 //-----------------------UART_OutDistance-----------------------
 // Output a 32-bit number in unsigned decimal fixed-point format
