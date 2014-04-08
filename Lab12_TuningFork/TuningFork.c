@@ -66,7 +66,7 @@ void WaitForInterrupt(void);  // low power mode
 void Sound_Init(void){ 
 	SYSCTL_RCGC2_R |= 0x00000001; // activate port A
   GPIO_PORTA_AMSEL_R = 0;      // no analog 
-  GPIO_PORTA_PCTL_R &= ~0x00F00000; // regular function
+  GPIO_PORTA_PCTL_R &= 0xFFFF00FF; // regular function
   GPIO_PORTA_DIR_R |= 0x04;     // make PA3 out
   GPIO_PORTA_DR8R_R |= 0x04;    // can drive up to 8mA out
   GPIO_PORTA_AFSEL_R &= ~0x0C;  // disable alt funct on PA3 and PA2
@@ -75,7 +75,7 @@ void Sound_Init(void){
 
 void SysTick_Init(void) {
 	NVIC_ST_CTRL_R = 0;           // disable SysTick during setup
-  NVIC_ST_RELOAD_R = 90908;     // 880HZ (assuming 80MHz)
+  NVIC_ST_RELOAD_R = 90908;     // 880HZ (assuming 80MHz), use 305809 for middle c
   NVIC_ST_CURRENT_R = 0;        // any write to current clears it
   NVIC_SYS_PRI3_R = (NVIC_SYS_PRI3_R&0x00FFFFFF); // priority 0              
   NVIC_ST_CTRL_R = 0x07;  // enable with core clock and interrupts	
