@@ -5,12 +5,20 @@
 // Daniel Valvano, Jonathan Valvano
 // March 13, 2014
 
+// Period =  80000000/16/Freq=5000000/Freq
+#define C1   2389   // 2093 Hz
+#define B1   2531   // 1975.5 Hz
+#define BF1  2681   // 1864.7 Hz
+#define A1   2841   // 1760 Hz
+
+void DAC_Init(void);
+
 // **************Sound_Init*********************
 // Initialize Systick periodic interrupts
 // Also initializes DAC
 // Input: none
 // Output: none
-void Sound_Init(void);
+void Sound_Init(unsigned long period);
 
 // **************Sound_Tone*********************
 // Change SysTick periodic interrupts to start sound output

@@ -13,8 +13,17 @@
 // Initialize 4-bit DAC 
 // Input: none
 // Output: none
-void DAC_Init(void){
-
+// 4-bit DAC has 4 pins for out 
+// PB0 = DAC bit 0, ... PB3 = DAC bit 3
+// TODO alter this for lab13 change the ports
+void DAC_Init(void){unsigned long volatile delay;
+  SYSCTL_RCGC2_R |= SYSCTL_RCGC2_GPIOB; // activate port B
+  delay = SYSCTL_RCGC2_R;    // allow time to finish activating
+  GPIO_PORTB_AMSEL_R &= ~0x0F;      // no analog 
+  GPIO_PORTB_PCTL_R &= ~0x00000FFF; // regular function
+  GPIO_PORTB_DIR_R |= 0x0F;      // make PB0-PB3 out for a 4-bit DAC
+  GPIO_PORTB_AFSEL_R &= ~0x0F;   // disable alt funct on PB0-PB3 
+  GPIO_PORTB_DEN_R |= 0x0F;      // enable digital I/O on PB0-PB3 
 }
 
 
