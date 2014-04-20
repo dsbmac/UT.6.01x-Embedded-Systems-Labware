@@ -299,25 +299,25 @@ Image Symbol Table
     i.ADC1_In                                0x000003c4   Section        0  texas.o(i.ADC1_In)
     i.ADC1_Init                              0x00000408   Section        0  texas.o(i.ADC1_Init)
     i.DAC_Init                               0x000004dc   Section        0  dac.o(i.DAC_Init)
-    i.DAC_Out                                0x0000054c   Section        0  dac.o(i.DAC_Out)
-    i.Encrypt                                0x00000550   Section        0  texas.o(i.Encrypt)
-    i.PLL_Init                               0x000005bc   Section        0  texas.o(i.PLL_Init)
-    i.Piano_In                               0x00000638   Section        0  piano.o(i.Piano_In)
-    i.Piano_Init                             0x0000064c   Section        0  piano.o(i.Piano_Init)
-    i.SetCode                                0x000006c0   Section        0  texas.o(i.SetCode)
-    i.SetCourse                              0x000006d8   Section        0  texas.o(i.SetCourse)
-    i.SetGrade                               0x000006f0   Section        0  texas.o(i.SetGrade)
-    i.Sound_Init                             0x000007bc   Section        0  sound.o(i.Sound_Init)
-    i.SpecialBGTest_End                      0x000007fc   Section        0  texas.o(i.SpecialBGTest_End)
-    i.SpecialBGTest_Start                    0x00000b3c   Section        0  texas.o(i.SpecialBGTest_Start)
-    i.StartTimer4                            0x00000c24   Section        0  texas.o(i.StartTimer4)
-    i.StopTimer4                             0x00000c48   Section        0  texas.o(i.StopTimer4)
-    i.SysTick_Handler                        0x00000c60   Section        0  sound.o(i.SysTick_Handler)
-    i.TExaS_Init                             0x00000ca0   Section        0  texas.o(i.TExaS_Init)
-    i.Timer4A_Handler                        0x00000e94   Section        0  texas.o(i.Timer4A_Handler)
-    i.Timer5A_Handler                        0x00000eb4   Section        0  texas.o(i.Timer5A_Handler)
-    i.UART_Init                              0x00001728   Section        0  texas.o(i.UART_Init)
-    i.main                                   0x000017c0   Section        0  lab13.o(i.main)
+    i.DAC_Out                                0x0000055c   Section        0  dac.o(i.DAC_Out)
+    i.Encrypt                                0x00000560   Section        0  texas.o(i.Encrypt)
+    i.PLL_Init                               0x000005cc   Section        0  texas.o(i.PLL_Init)
+    i.Piano_In                               0x00000648   Section        0  piano.o(i.Piano_In)
+    i.Piano_Init                             0x0000065c   Section        0  piano.o(i.Piano_Init)
+    i.SetCode                                0x000006c8   Section        0  texas.o(i.SetCode)
+    i.SetCourse                              0x000006e0   Section        0  texas.o(i.SetCourse)
+    i.SetGrade                               0x000006f8   Section        0  texas.o(i.SetGrade)
+    i.Sound_Init                             0x000007c4   Section        0  sound.o(i.Sound_Init)
+    i.SpecialBGTest_End                      0x00000804   Section        0  texas.o(i.SpecialBGTest_End)
+    i.SpecialBGTest_Start                    0x00000b44   Section        0  texas.o(i.SpecialBGTest_Start)
+    i.StartTimer4                            0x00000c2c   Section        0  texas.o(i.StartTimer4)
+    i.StopTimer4                             0x00000c50   Section        0  texas.o(i.StopTimer4)
+    i.SysTick_Handler                        0x00000c68   Section        0  sound.o(i.SysTick_Handler)
+    i.TExaS_Init                             0x00000ca8   Section        0  texas.o(i.TExaS_Init)
+    i.Timer4A_Handler                        0x00000e9c   Section        0  texas.o(i.Timer4A_Handler)
+    i.Timer5A_Handler                        0x00000ebc   Section        0  texas.o(i.Timer5A_Handler)
+    i.UART_Init                              0x00001730   Section        0  texas.o(i.UART_Init)
+    i.main                                   0x000017c8   Section        0  lab13.o(i.main)
     .constdata                               0x000017ec   Section       16  sound.o(.constdata)
     .constdata                               0x000017fc   Section     9560  texas.o(.constdata)
     .data                                    0x20000000   Section        1  sound.o(.data)
@@ -551,26 +551,26 @@ Image Symbol Table
     __semihosting_library_function           0x000003c3   Thumb Code     0  indicate_semi.o(.text)
     ADC1_In                                  0x000003c5   Thumb Code    52  texas.o(i.ADC1_In)
     ADC1_Init                                0x00000409   Thumb Code   174  texas.o(i.ADC1_Init)
-    DAC_Init                                 0x000004dd   Thumb Code    88  dac.o(i.DAC_Init)
-    DAC_Out                                  0x0000054d   Thumb Code     2  dac.o(i.DAC_Out)
-    Encrypt                                  0x00000551   Thumb Code    92  texas.o(i.Encrypt)
-    PLL_Init                                 0x000005bd   Thumb Code   118  texas.o(i.PLL_Init)
-    Piano_In                                 0x00000639   Thumb Code    14  piano.o(i.Piano_In)
-    Piano_Init                               0x0000064d   Thumb Code    84  piano.o(i.Piano_Init)
-    SetCode                                  0x000006c1   Thumb Code    20  texas.o(i.SetCode)
-    SetCourse                                0x000006d9   Thumb Code    20  texas.o(i.SetCourse)
-    SetGrade                                 0x000006f1   Thumb Code   196  texas.o(i.SetGrade)
-    Sound_Init                               0x000007bd   Thumb Code    54  sound.o(i.Sound_Init)
-    SpecialBGTest_End                        0x000007fd   Thumb Code   780  texas.o(i.SpecialBGTest_End)
-    SpecialBGTest_Start                      0x00000b3d   Thumb Code   200  texas.o(i.SpecialBGTest_Start)
-    StartTimer4                              0x00000c25   Thumb Code    24  texas.o(i.StartTimer4)
-    StopTimer4                               0x00000c49   Thumb Code    16  texas.o(i.StopTimer4)
-    SysTick_Handler                          0x00000c61   Thumb Code    46  sound.o(i.SysTick_Handler)
-    TExaS_Init                               0x00000ca1   Thumb Code   360  texas.o(i.TExaS_Init)
-    Timer4A_Handler                          0x00000e95   Thumb Code    20  texas.o(i.Timer4A_Handler)
-    Timer5A_Handler                          0x00000eb5   Thumb Code  2118  texas.o(i.Timer5A_Handler)
-    UART_Init                                0x00001729   Thumb Code   126  texas.o(i.UART_Init)
-    main                                     0x000017c1   Thumb Code    38  lab13.o(i.main)
+    DAC_Init                                 0x000004dd   Thumb Code   100  dac.o(i.DAC_Init)
+    DAC_Out                                  0x0000055d   Thumb Code     2  dac.o(i.DAC_Out)
+    Encrypt                                  0x00000561   Thumb Code    92  texas.o(i.Encrypt)
+    PLL_Init                                 0x000005cd   Thumb Code   118  texas.o(i.PLL_Init)
+    Piano_In                                 0x00000649   Thumb Code    14  piano.o(i.Piano_In)
+    Piano_Init                               0x0000065d   Thumb Code    76  piano.o(i.Piano_Init)
+    SetCode                                  0x000006c9   Thumb Code    20  texas.o(i.SetCode)
+    SetCourse                                0x000006e1   Thumb Code    20  texas.o(i.SetCourse)
+    SetGrade                                 0x000006f9   Thumb Code   196  texas.o(i.SetGrade)
+    Sound_Init                               0x000007c5   Thumb Code    54  sound.o(i.Sound_Init)
+    SpecialBGTest_End                        0x00000805   Thumb Code   780  texas.o(i.SpecialBGTest_End)
+    SpecialBGTest_Start                      0x00000b45   Thumb Code   200  texas.o(i.SpecialBGTest_Start)
+    StartTimer4                              0x00000c2d   Thumb Code    24  texas.o(i.StartTimer4)
+    StopTimer4                               0x00000c51   Thumb Code    16  texas.o(i.StopTimer4)
+    SysTick_Handler                          0x00000c69   Thumb Code    46  sound.o(i.SysTick_Handler)
+    TExaS_Init                               0x00000ca9   Thumb Code   360  texas.o(i.TExaS_Init)
+    Timer4A_Handler                          0x00000e9d   Thumb Code    20  texas.o(i.Timer4A_Handler)
+    Timer5A_Handler                          0x00000ebd   Thumb Code  2118  texas.o(i.Timer5A_Handler)
+    UART_Init                                0x00001731   Thumb Code   126  texas.o(i.UART_Init)
+    main                                     0x000017c9   Thumb Code    32  lab13.o(i.main)
     SineWave                                 0x000017ec   Data          16  sound.o(.constdata)
     Port                                     0x000017fc   Data          24  texas.o(.constdata)
     InputPortMsgA                            0x00001814   Data          40  texas.o(.constdata)
@@ -693,27 +693,27 @@ Memory Map of the image
     0x000003c2   0x00000002   PAD
     0x000003c4   0x00000044   Code   RO          114    i.ADC1_In           texas.o
     0x00000408   0x000000d4   Code   RO          115    i.ADC1_Init         texas.o
-    0x000004dc   0x00000070   Code   RO           72    i.DAC_Init          dac.o
-    0x0000054c   0x00000002   Code   RO           73    i.DAC_Out           dac.o
-    0x0000054e   0x00000002   PAD
-    0x00000550   0x0000006c   Code   RO          117    i.Encrypt           texas.o
-    0x000005bc   0x0000007c   Code   RO          118    i.PLL_Init          texas.o
-    0x00000638   0x00000014   Code   RO           91    i.Piano_In          piano.o
-    0x0000064c   0x00000074   Code   RO           92    i.Piano_Init        piano.o
-    0x000006c0   0x00000018   Code   RO          120    i.SetCode           texas.o
-    0x000006d8   0x00000018   Code   RO          121    i.SetCourse         texas.o
-    0x000006f0   0x000000cc   Code   RO          122    i.SetGrade          texas.o
-    0x000007bc   0x00000040   Code   RO           38    i.Sound_Init        sound.o
-    0x000007fc   0x00000340   Code   RO          124    i.SpecialBGTest_End  texas.o
-    0x00000b3c   0x000000e8   Code   RO          125    i.SpecialBGTest_Start  texas.o
-    0x00000c24   0x00000024   Code   RO          126    i.StartTimer4       texas.o
-    0x00000c48   0x00000018   Code   RO          127    i.StopTimer4        texas.o
-    0x00000c60   0x00000040   Code   RO           41    i.SysTick_Handler   sound.o
-    0x00000ca0   0x000001f4   Code   RO          128    i.TExaS_Init        texas.o
-    0x00000e94   0x00000020   Code   RO          130    i.Timer4A_Handler   texas.o
-    0x00000eb4   0x00000874   Code   RO          131    i.Timer5A_Handler   texas.o
-    0x00001728   0x00000098   Code   RO          134    i.UART_Init         texas.o
-    0x000017c0   0x0000002c   Code   RO           13    i.main              lab13.o
+    0x000004dc   0x00000080   Code   RO           72    i.DAC_Init          dac.o
+    0x0000055c   0x00000002   Code   RO           73    i.DAC_Out           dac.o
+    0x0000055e   0x00000002   PAD
+    0x00000560   0x0000006c   Code   RO          117    i.Encrypt           texas.o
+    0x000005cc   0x0000007c   Code   RO          118    i.PLL_Init          texas.o
+    0x00000648   0x00000014   Code   RO           91    i.Piano_In          piano.o
+    0x0000065c   0x0000006c   Code   RO           92    i.Piano_Init        piano.o
+    0x000006c8   0x00000018   Code   RO          120    i.SetCode           texas.o
+    0x000006e0   0x00000018   Code   RO          121    i.SetCourse         texas.o
+    0x000006f8   0x000000cc   Code   RO          122    i.SetGrade          texas.o
+    0x000007c4   0x00000040   Code   RO           38    i.Sound_Init        sound.o
+    0x00000804   0x00000340   Code   RO          124    i.SpecialBGTest_End  texas.o
+    0x00000b44   0x000000e8   Code   RO          125    i.SpecialBGTest_Start  texas.o
+    0x00000c2c   0x00000024   Code   RO          126    i.StartTimer4       texas.o
+    0x00000c50   0x00000018   Code   RO          127    i.StopTimer4        texas.o
+    0x00000c68   0x00000040   Code   RO           41    i.SysTick_Handler   sound.o
+    0x00000ca8   0x000001f4   Code   RO          128    i.TExaS_Init        texas.o
+    0x00000e9c   0x00000020   Code   RO          130    i.Timer4A_Handler   texas.o
+    0x00000ebc   0x00000874   Code   RO          131    i.Timer5A_Handler   texas.o
+    0x00001730   0x00000098   Code   RO          134    i.UART_Init         texas.o
+    0x000017c8   0x00000024   Code   RO           13    i.main              lab13.o
     0x000017ec   0x00000010   Data   RO           42    .constdata          sound.o
     0x000017fc   0x00002558   Data   RO          139    .constdata          texas.o
     0x00003d54   0x00000020   Data   RO          426    Region$$Table       anon$$obj.o
@@ -746,15 +746,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       114         24          0          0          0        741   dac.o
-        44          6          0          0          0       1839   lab13.o
-       136         38          0          0          0        756   piano.o
+       130         28          0          0          0        745   dac.o
+        36          4          0          0          0       1827   lab13.o
+       128         38          0          0          0        756   piano.o
        128         28         16          1          0       1212   sound.o
        692        632          0          0       1024        852   startup.o
       4736        778       9560         76        692      22901   texas.o
 
     ----------------------------------------------------------------------
-      5852       1506       9608         80       1716      28301   Object Totals
+      5852       1508       9608         80       1716      28293   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          2          0          0          3          0          0   (incl. Padding)
 
@@ -803,9 +803,9 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      6124       1522       9608         80       1816      27629   Grand Totals
-      6124       1522       9608         80       1816      27629   ELF Image Totals
-      6124       1522       9608         80          0          0   ROM Totals
+      6124       1524       9608         80       1816      27621   Grand Totals
+      6124       1524       9608         80       1816      27621   ELF Image Totals
+      6124       1524       9608         80          0          0   ROM Totals
 
 ==============================================================================
 

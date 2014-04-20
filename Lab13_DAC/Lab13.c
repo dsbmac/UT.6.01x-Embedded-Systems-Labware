@@ -16,18 +16,21 @@
 void DisableInterrupts(void); // Disable interrupts
 void EnableInterrupts(void);  // Enable interrupts
 void delay(unsigned long msec);
+
 int main(void){ // Real Lab13 
+	unsigned long input;
+	
 	// for the real board grader to work 
 	// you must connect PD3 to your DAC output
   TExaS_Init(SW_PIN_PE3210, DAC_PIN_PB3210,ScopeOn); // activate grader and set system clock to 80 MHz
-// PortE used for piano keys, PortB used for DAC        
+  // PortE used for piano keys, PortB used for DAC        
   Sound_Init(500000); // initialize SysTick timer and DAC
   Piano_Init();
-  EnableInterrupts();  // enable after all initialization are done
+  EnableInterrupts();  // enable after all initialization are done	
+
   while(1){              
-	unsigned long input;		
 	// input from keys to select tone
-	input = Piano_In()&0x10; // bit 4 means SW1 pressed
+	input = Piano_In() & 0x0F; // means a switch is pressed
   }            
 }
 

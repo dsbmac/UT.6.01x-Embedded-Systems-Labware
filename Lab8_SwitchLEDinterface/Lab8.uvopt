@@ -240,8 +240,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>22</TopLine>
-      <CurrentLine>35</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>13</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\SwitchLEDInterface.c</PathWithFileName>
       <FilenameWithoutPath>SwitchLEDInterface.c</FilenameWithoutPath>

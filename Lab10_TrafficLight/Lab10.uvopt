@@ -194,7 +194,7 @@
         <AscS3>0</AscS3>
         <aSer3>0</aSer3>
         <eProf>0</eProf>
-        <aLa>0</aLa>
+        <aLa>1</aLa>
         <aPa1>0</aPa1>
         <AscS4>0</AscS4>
         <aSer4>0</aSer4>
@@ -222,7 +222,7 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>274</TopLine>
+      <TopLine>268</TopLine>
       <CurrentLine>277</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\startup.s</PathWithFileName>
@@ -234,12 +234,12 @@
       <GroupNumber>1</GroupNumber>
       <FileNumber>2</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>2</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>11</TopLine>
-      <CurrentLine>35</CurrentLine>
+      <TopLine>177</TopLine>
+      <CurrentLine>183</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\TableTrafficLight.c</PathWithFileName>
       <FilenameWithoutPath>TableTrafficLight.c</FilenameWithoutPath>
