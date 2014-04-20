@@ -22,25 +22,19 @@ void EnableInterrupts(void);  // Enable interrupts
 void WaitForInterrupt(void);  // low power mode
 
 
-
-
-void SysTick_Init(unsigned long period) {
-  Index = 0;
-  NVIC_ST_CTRL_R = 0;         // disable SysTick during setup
-  NVIC_ST_RELOAD_R = period-1;// reload value
-  NVIC_ST_CURRENT_R = 0;      // any write to current clears it
-  NVIC_SYS_PRI3_R = (NVIC_SYS_PRI3_R&0x00FFFFFF)|0x20000000; // priority 1      
-  NVIC_ST_CTRL_R = 0x0007;  // enable SysTick with core clock and interrupts
-}
-
 // **************Sound_Init*********************
 // Initialize Systick periodic interrupts
 // Also calls DAC_Init() to initialize DAC
 // Input: none
 // Output: none
 void Sound_Init(unsigned long period){
-	DAC_Init();
-  SysTick_Init(period);
+	DAC_Init();	
+	Index = 0;
+  NVIC_ST_CTRL_R = 0;         // disable SysTick during setup
+  NVIC_ST_RELOAD_R = period-1;// reload value
+  NVIC_ST_CURRENT_R = 0;      // any write to current clears it
+  NVIC_SYS_PRI3_R = (NVIC_SYS_PRI3_R&0x00FFFFFF)|0x20000000; // priority 1      
+  NVIC_ST_CTRL_R = 0x0007;  // enable SysTick with core clock and interrupts
 }
 
 // **************Sound_Tone*********************
@@ -69,7 +63,7 @@ void Sound_Off(void){
 // Executed every 12.5ns*(period)
 // RELOAD value is important. controls the rate at which SysTick interrupts
 void SysTick_Handler(void){
-	GPIO_PORTF_DATA_R ^= 0x08;     // toggle PF3, debugging
+	GPIO_PORTE_DATA_R ^= 0x08;     // toggle PF3, debugging
   Index = (Index+1)&0x0F;  
   DAC_Out(SineWave[Index]); 
 }

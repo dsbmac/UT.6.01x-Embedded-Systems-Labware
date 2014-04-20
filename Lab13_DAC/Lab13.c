@@ -24,11 +24,11 @@ int main(void){ // Real Lab13
   Sound_Init(500000); // initialize SysTick timer and DAC
   Piano_Init();
   EnableInterrupts();  // enable after all initialization are done
-  while(1){                
-// input from keys to select tone
-
-  }
-            
+  while(1){              
+	unsigned long input;		
+	// input from keys to select tone
+	input = Piano_In()&0x10; // bit 4 means SW1 pressed
+  }            
 }
 
 // Inputs: Number of msec to delay

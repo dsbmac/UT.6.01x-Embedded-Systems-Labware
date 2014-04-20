@@ -8,31 +8,18 @@ Project File Date:  03/13/2014
 
 <h2>Output:</h2>
 Build target 'Lab13'
-compiling Sound.c...
-compiling DAC.c...
 linking...
-Program Size: Code=5988 RO-data=9608 RW-data=80 ZI-data=1816  
+Program Size: Code=6124 RO-data=9608 RW-data=80 ZI-data=1816  
 ".\Lab13.axf" - 0 Error(s), 0 Warning(s).
-</pre>
-</body>
-</html>
-ap.
-Finished: 2 information, 0 warning and 1 error messages.
-".\Lab13.axf" - 1 Error(s), 0 Warning(s).
-Target not created
-rror(s), 0 Warning(s).
-Target not created
-: expected a "}"
-Lab13.c: 1 warning, 3 errors
-compiling Sound.c...
-Sound.c(28): error:  #65: expected a ";"
-  void DAC_Init(void){unsigned long volatile delay;
-Sound.c(86): warning: At end of source:  #12-D: parsing restarts here after previous syntax error
-Sound.c(14): warning:  #177-D: variable "Index" was declared but never referenced
-  unsigned char Index;  
-Sound.c(17): warning:  #177-D: variable "SineWave" was declared but never referenced
-  const unsigned char SineWave[16] = {4,5,6,7,7,7,6,5,4,3,2,1,1,1,2,3};
-Sound.c(86): error: At end of source:  #67: expected a "}"
-Sound.c: 3 warnings, 2 errors
-".\Lab13.axf" - 5 Error(s), 4 Warning(s).
-Target not created
+ab13.c(28): warning:  #550-D: variable "input" was set but never used
+        unsigned long input;            
+Lab13.c: 2 warnings, 0 errors
+compiling Piano.c...
+Piano.h(27): warning:  #1-D: last line of file ends without a newline
+  void Delay10ms(void);
+Piano.c(53): warning:  #1-D: last line of file ends without a newline
+  }
+Piano.c: 2 warnings, 0 errors
+linking...
+Program Size: Code=6124 RO-data=9608 RW-data=80 ZI-data=1816  
+".\Lab13.axf" - 0 Error(s), 4 Warning(s).

@@ -16,7 +16,8 @@
 // 4-bit DAC has 4 pins for out 
 // PB0 = DAC bit 0, ... PB3 = DAC bit 3
 // TODO alter this for lab13 change the ports
-void DAC_Init(void){unsigned long volatile delay;
+void DAC_Init(void){
+	unsigned long volatile delay;
   SYSCTL_RCGC2_R |= SYSCTL_RCGC2_GPIOB; // activate port B
   delay = SYSCTL_RCGC2_R;    // allow time to finish activating
   GPIO_PORTB_AMSEL_R &= ~0x0F;      // no analog 

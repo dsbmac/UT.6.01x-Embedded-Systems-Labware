@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Lab13.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Lab13.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Fri Apr 18 18:48:06 2014
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Sat Apr 19 22:03:44 2014
 <BR><P>
 <H3>Maximum Stack Usage =        136 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -13,8 +13,8 @@ Timer5A_Handler &rArr; SpecialBGTest_End
 Functions with no stack information
 </H3><UL>
  <LI><a href="#[7f]">Reset_Handler</a>
- <LI><a href="#[9a]">DisableInterrupts</a>
- <LI><a href="#[9b]">EnableInterrupts</a>
+ <LI><a href="#[99]">DisableInterrupts</a>
+ <LI><a href="#[9a]">EnableInterrupts</a>
  <LI><a href="#[c8]">StartCritical</a>
  <LI><a href="#[c9]">EndCritical</a>
  <LI><a href="#[ca]">WaitForInterrupt</a>
@@ -698,14 +698,14 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_sys_exit
 </UL>
 
-<P><STRONG><a name="[9a]"></a>DisableInterrupts</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpecialBGTest_Start
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpecialBGTest_End
+<P><STRONG><a name="[99]"></a>DisableInterrupts</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpecialBGTest_Start
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpecialBGTest_End
 </UL>
 
-<P><STRONG><a name="[9b]"></a>EnableInterrupts</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpecialBGTest_Start
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpecialBGTest_End
+<P><STRONG><a name="[9a]"></a>EnableInterrupts</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpecialBGTest_Start
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpecialBGTest_End
 <LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -759,14 +759,14 @@ Global Symbols
 
 <P><STRONG><a name="[d2]"></a>__semihosting_library_function</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, indicate_semi.o(.text), UNUSED)
 
-<P><STRONG><a name="[a3]"></a>ADC1_In</STRONG> (Thumb, 52 bytes, Stack size 0 bytes, texas.o(i.ADC1_In))
+<P><STRONG><a name="[a2]"></a>ADC1_In</STRONG> (Thumb, 52 bytes, Stack size 0 bytes, texas.o(i.ADC1_In))
 <BR><BR>[Called By]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer5A_Handler
 </UL>
 
-<P><STRONG><a name="[a2]"></a>ADC1_Init</STRONG> (Thumb, 174 bytes, Stack size 8 bytes, texas.o(i.ADC1_Init))
+<P><STRONG><a name="[a1]"></a>ADC1_Init</STRONG> (Thumb, 174 bytes, Stack size 8 bytes, texas.o(i.ADC1_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = ADC1_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TExaS_Init
+<BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TExaS_Init
 </UL>
 
 <P><STRONG><a name="[97]"></a>DAC_Init</STRONG> (Thumb, 88 bytes, Stack size 8 bytes, dac.o(i.DAC_Init))
@@ -775,7 +775,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sound_Init
 </UL>
 
-<P><STRONG><a name="[9d]"></a>DAC_Out</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, dac.o(i.DAC_Out))
+<P><STRONG><a name="[9c]"></a>DAC_Out</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, dac.o(i.DAC_Out))
 <BR><BR>[Called By]<UL><LI><a href="#[c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
 </UL>
 
@@ -787,21 +787,27 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGrade
 </UL>
 
-<P><STRONG><a name="[9f]"></a>PLL_Init</STRONG> (Thumb, 118 bytes, Stack size 0 bytes, texas.o(i.PLL_Init))
-<BR><BR>[Called By]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TExaS_Init
+<P><STRONG><a name="[9e]"></a>PLL_Init</STRONG> (Thumb, 118 bytes, Stack size 0 bytes, texas.o(i.PLL_Init))
+<BR><BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TExaS_Init
 </UL>
 
-<P><STRONG><a name="[a6]"></a>Piano_Init</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, piano.o(i.Piano_Init))
+<P><STRONG><a name="[a6]"></a>Piano_In</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, piano.o(i.Piano_In))
 <BR><BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[a5]"></a>Piano_Init</STRONG> (Thumb, 84 bytes, Stack size 8 bytes, piano.o(i.Piano_Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Piano_Init
+</UL>
+<BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[94]"></a>SetCode</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, texas.o(i.SetCode))
 <BR><BR>[Called By]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Encrypt
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TExaS_Init
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TExaS_Init
 </UL>
 
-<P><STRONG><a name="[a0]"></a>SetCourse</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, texas.o(i.SetCourse))
-<BR><BR>[Called By]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TExaS_Init
+<P><STRONG><a name="[9f]"></a>SetCourse</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, texas.o(i.SetCourse))
+<BR><BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TExaS_Init
 </UL>
 
 <P><STRONG><a name="[95]"></a>SetGrade</STRONG> (Thumb, 196 bytes, Stack size 16 bytes, texas.o(i.SetGrade))
@@ -812,62 +818,57 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer5A_Handler
 </UL>
 
-<P><STRONG><a name="[96]"></a>Sound_Init</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, sound.o(i.Sound_Init))
+<P><STRONG><a name="[96]"></a>Sound_Init</STRONG> (Thumb, 54 bytes, Stack size 8 bytes, sound.o(i.Sound_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = Sound_Init &rArr; DAC_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DAC_Init
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[99]"></a>SpecialBGTest_End</STRONG> (Thumb, 780 bytes, Stack size 104 bytes, texas.o(i.SpecialBGTest_End))
+<P><STRONG><a name="[98]"></a>SpecialBGTest_End</STRONG> (Thumb, 780 bytes, Stack size 104 bytes, texas.o(i.SpecialBGTest_End))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104 + Unknown Stack Size
 <LI>Call Chain = SpecialBGTest_End
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EnableInterrupts
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisableInterrupts
+<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EnableInterrupts
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisableInterrupts
 </UL>
 <BR>[Called By]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer5A_Handler
 </UL>
 
-<P><STRONG><a name="[9c]"></a>SpecialBGTest_Start</STRONG> (Thumb, 200 bytes, Stack size 16 bytes, texas.o(i.SpecialBGTest_Start))
+<P><STRONG><a name="[9b]"></a>SpecialBGTest_Start</STRONG> (Thumb, 200 bytes, Stack size 16 bytes, texas.o(i.SpecialBGTest_Start))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16 + Unknown Stack Size
 <LI>Call Chain = SpecialBGTest_Start
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EnableInterrupts
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisableInterrupts
+<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EnableInterrupts
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisableInterrupts
 </UL>
 <BR>[Called By]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer5A_Handler
 </UL>
 
-<P><STRONG><a name="[a5]"></a>StartTimer4</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, texas.o(i.StartTimer4))
+<P><STRONG><a name="[a4]"></a>StartTimer4</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, texas.o(i.StartTimer4))
 <BR><BR>[Called By]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer5A_Handler
 </UL>
 
-<P><STRONG><a name="[a4]"></a>StopTimer4</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, texas.o(i.StopTimer4))
+<P><STRONG><a name="[a3]"></a>StopTimer4</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, texas.o(i.StopTimer4))
 <BR><BR>[Called By]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer5A_Handler
 </UL>
 
 <P><STRONG><a name="[c]"></a>SysTick_Handler</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, sound.o(i.SysTick_Handler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = SysTick_Handler
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DAC_Out
+<BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DAC_Out
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup.o(RESET)
 </UL>
-<P><STRONG><a name="[98]"></a>SysTick_Init</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, sound.o(i.SysTick_Init))
-<BR><BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sound_Init
-</UL>
-
-<P><STRONG><a name="[9e]"></a>TExaS_Init</STRONG> (Thumb, 360 bytes, Stack size 16 bytes, texas.o(i.TExaS_Init))
+<P><STRONG><a name="[9d]"></a>TExaS_Init</STRONG> (Thumb, 360 bytes, Stack size 16 bytes, texas.o(i.TExaS_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = TExaS_Init &rArr; ADC1_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_Init
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetCourse
+<BR>[Calls]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_Init
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetCourse
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetCode
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PLL_Init
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC1_Init
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PLL_Init
+<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC1_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -879,27 +880,28 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 136 + Unknown Stack Size
 <LI>Call Chain = Timer5A_Handler &rArr; SpecialBGTest_End
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StopTimer4
-<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartTimer4
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpecialBGTest_Start
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpecialBGTest_End
+<BR>[Calls]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StopTimer4
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartTimer4
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpecialBGTest_Start
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SpecialBGTest_End
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetGrade
-<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC1_In
+<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC1_In
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup.o(RESET)
 </UL>
-<P><STRONG><a name="[a1]"></a>UART_Init</STRONG> (Thumb, 126 bytes, Stack size 0 bytes, texas.o(i.UART_Init))
-<BR><BR>[Called By]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TExaS_Init
+<P><STRONG><a name="[a0]"></a>UART_Init</STRONG> (Thumb, 126 bytes, Stack size 0 bytes, texas.o(i.UART_Init))
+<BR><BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TExaS_Init
 </UL>
 
-<P><STRONG><a name="[8a]"></a>main</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, lab13.o(i.main))
+<P><STRONG><a name="[8a]"></a>main</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, lab13.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24 + Unknown Stack Size
 <LI>Call Chain = main &rArr; TExaS_Init &rArr; ADC1_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TExaS_Init
+<BR>[Calls]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TExaS_Init
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sound_Init
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Piano_Init
-<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EnableInterrupts
+<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Piano_Init
+<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Piano_In
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EnableInterrupts
 </UL>
 <BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
