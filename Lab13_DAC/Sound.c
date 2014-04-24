@@ -14,7 +14,7 @@
 unsigned char Index;  
 
 // 3-bit 16-element sine wave
-const unsigned char SineWave[16] = {8, 10, 13, 14, 15, 14, 13, 10, 8, 5, 2, 1, 0, 1, 2, 5};
+const unsigned char SineWave[16] = {8, 11, 13, 14, 15, 14, 13, 11, 8, 5, 3, 2, 1, 2, 3, 5};
 
 // basic functions defined at end of startup.s
 void DisableInterrupts(void); // Disable interrupts
@@ -46,7 +46,11 @@ void Sound_Init(unsigned long period){
 // Output: none
 void Sound_Tone(unsigned long period){
 // this routine sets the RELOAD and starts SysTick
-	Sound_Init(50000);      // Play 100 Hz wave
+	if (period == 0) {
+		DAC_Out(0);
+	} else {
+		Sound_Init(period);
+	}
 }
 
 

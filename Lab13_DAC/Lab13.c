@@ -23,6 +23,7 @@ int main(void){ // Real Lab13
 
 	// for the real board grader to work 
 	// you must connect PD3 to your DAC output
+
   TExaS_Init(SW_PIN_PE3210, DAC_PIN_PB3210,ScopeOn); // activate grader and set system clock to 80 MHz
   // PortE used for piano keys, PortB used for DAC        
 	DisableInterrupts();
@@ -40,30 +41,49 @@ int main(void){ // Real Lab13
     DAC_Out(i);
   }
 	
-	previous = Piano_In()&0x0F;
+	previous = Piano_In();
 
   while(1) {              
 		// input from keys to select tone
 		input = Piano_In(); // means a switch is pressed
-		if(input) {
+		if (input) {
+			// Piano key 0
 			if(input == 0x01) {
 				EnableInterrupts();
 				Sound_Init(C0);
+				delay(60);
 			}
+			// Piano key 1
 			else if(input == 0x02) {
 				EnableInterrupts();
 				Sound_Init(D);
+				delay(20);
+
 			}
+			// Piano key 2
 			else if(input == 0x04) {
+				
 				EnableInterrupts();
 				Sound_Init(E);
+				delay(55);
 			}
+			// Piano key 3
 			else if(input == 0x08) {
 				EnableInterrupts();
 				Sound_Init(G);
+				delay(5);
 			}
-		}
-		delay(10);
+		} 
+
+		else {
+			delay(10);	
+		}	
+		
+		if(previous&&(input==0)){ // just released     
+      DisableInterrupts();    // stop sound
+		}		
+
+		previous = input;		
   }            
 }
 

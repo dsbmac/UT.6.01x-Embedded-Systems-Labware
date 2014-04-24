@@ -13,8 +13,6 @@
 #include "Piano.h"
 #include "..//tm4c123gh6pm.h"
 
-#define SENSOR                  (*((volatile unsigned long *)0x4002400F))
-
 
 // **************Piano_Init*********************
 // Initialize piano key inputs
