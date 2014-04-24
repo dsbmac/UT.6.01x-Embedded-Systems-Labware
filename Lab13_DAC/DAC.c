@@ -18,14 +18,14 @@
 // TODO alter this for lab13 change the ports
 void DAC_Init(void){
 	unsigned long volatile delay;
-  SYSCTL_RCGC2_R |= 0x02; // activate port B
+  SYSCTL_RCGC2_R |= SYSCTL_RCGC2_GPIOB; // activate port B
   delay = SYSCTL_RCGC2_R;    // allow time to finish activating
   GPIO_PORTB_AMSEL_R &= ~0x0F;      // no analog 
   GPIO_PORTB_PCTL_R &= ~0x00000FFF; // regular function
   GPIO_PORTB_DIR_R |= 0x0F;      // make PB0-PB3 out for a 4-bit DAC
   GPIO_PORTB_AFSEL_R &= ~0x0F;   // disable alt funct on PB0-PB3 
   GPIO_PORTB_DEN_R |= 0x0F;      // enable digital I/O on PB0-PB3 
-	GPIO_PORTB_DR8R_R |= 0x0F;      // enable digital I/O on PB0-PB3 
+	GPIO_PORTB_DR8R_R |= 0x0F;      // this is for the lab grader
 }
 
 
@@ -34,5 +34,5 @@ void DAC_Init(void){
 // Input: 4-bit data, 0 to 15 
 // Output: none
 void DAC_Out(unsigned long data){
-  
+	GPIO_PORTB_DATA_R = data;
 }

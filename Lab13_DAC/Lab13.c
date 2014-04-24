@@ -11,6 +11,7 @@
 #include "Sound.h"
 #include "Piano.h"
 #include "TExaS.h"
+#include "DAC.h"
 
 // basic functions defined at end of startup.s
 void DisableInterrupts(void); // Disable interrupts
@@ -18,19 +19,51 @@ void EnableInterrupts(void);  // Enable interrupts
 void delay(unsigned long msec);
 
 int main(void){ // Real Lab13 
-	unsigned long input;
-	
+	unsigned long i,input,previous;     
+
 	// for the real board grader to work 
 	// you must connect PD3 to your DAC output
   TExaS_Init(SW_PIN_PE3210, DAC_PIN_PB3210,ScopeOn); // activate grader and set system clock to 80 MHz
   // PortE used for piano keys, PortB used for DAC        
+	DisableInterrupts();
+	Piano_Init();
   Sound_Init(500000); // initialize SysTick timer and DAC
-  Piano_Init();
   EnableInterrupts();  // enable after all initialization are done	
 
-  while(1){              
-	// input from keys to select tone
-	input = Piano_In() & 0x0F; // means a switch is pressed
+	// Initial testing, law of superposition
+  DAC_Out(1);
+  DAC_Out(2);
+  DAC_Out(4);
+	
+// static testing, single step and record Vout
+  for(i=0;i<8;i++){
+    DAC_Out(i);
+  }
+	
+	previous = Piano_In()&0x0F;
+
+  while(1) {              
+		// input from keys to select tone
+		input = Piano_In(); // means a switch is pressed
+		if(input) {
+			if(input == 0x01) {
+				EnableInterrupts();
+				Sound_Init(C0);
+			}
+			else if(input == 0x02) {
+				EnableInterrupts();
+				Sound_Init(D);
+			}
+			else if(input == 0x04) {
+				EnableInterrupts();
+				Sound_Init(E);
+			}
+			else if(input == 0x08) {
+				EnableInterrupts();
+				Sound_Init(G);
+			}
+		}
+		delay(10);
   }            
 }
 

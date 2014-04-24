@@ -3,3 +3,4 @@
 .\lab13.o: Sound.h
 .\lab13.o: Piano.h
 .\lab13.o: TExaS.h
+.\lab13.o: DAC.h

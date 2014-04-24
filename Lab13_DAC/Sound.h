@@ -5,11 +5,16 @@
 // Daniel Valvano, Jonathan Valvano
 // March 13, 2014
 
-// Period =  80000000/16/Freq=5000000/Freq
+// Period =  (80000000/16)/Freq = 5000000/Freq
 #define C1   2389   // 2093 Hz
 #define B1   2531   // 1975.5 Hz
 #define BF1  2681   // 1864.7 Hz
 #define A1   2841   // 1760 Hz
+#define C0   9556   // Piano key 0: C (523.251 Hz)
+#define D    8513   // Piano key 1: D (587.330 Hz)
+#define E    7584   // Piano key 2: E (659.255 Hz)
+#define G    6378   // Piano key 3: G (783.991 Hz)
+
 
 void DAC_Init(void);
 
