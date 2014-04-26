@@ -19,7 +19,7 @@ void EnableInterrupts(void);  // Enable interrupts
 void delay(unsigned long msec);
 
 int main(void){ // Real Lab13 
-	unsigned long i,input,previous;     
+	unsigned long i,input,previous,n;     
 
 	// for the real board grader to work 
 	// you must connect PD3 to your DAC output
@@ -42,6 +42,17 @@ int main(void){ // Real Lab13
   }
 	
 	previous = Piano_In();
+	
+	n = 0;
+  TExaS_Init(SW_PIN_PA5432, DAC_PIN_PB3210,ScopeOn); // activate grader 
+	
+	// static test
+	while(1){
+    DAC_Out(n);     // your code to output to the DAC
+    delay(1); // wait 1s (later change this to 1ms)
+    n = (n+1)&0x0F;
+  }
+	
 
   while(1) {              
 		// input from keys to select tone
