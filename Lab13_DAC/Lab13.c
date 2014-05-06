@@ -30,6 +30,7 @@ int main(void){ // Real Lab13
 	Piano_Init();
   Sound_Init(500000); // initialize SysTick timer and DAC
   EnableInterrupts();  // enable after all initialization are done	
+	Sound_Off();
 
 	// Initial testing, law of superposition
   DAC_Out(1);
@@ -43,57 +44,47 @@ int main(void){ // Real Lab13
 	
 	previous = Piano_In();
 	
-	n = 0;
-  TExaS_Init(SW_PIN_PA5432, DAC_PIN_PB3210,ScopeOn); // activate grader 
+//	n = 0;
+//  TExaS_Init(SW_PIN_PA5432, DAC_PIN_PB3210,ScopeOn); // activate grader 
+//	
+//	// static test
+//	while(1){
+//    DAC_Out(n);     // your code to output to the DAC
+//    delay(1); // wait 1s (later change this to 1ms)
+//    n = (n+1)&0x0F;
+//  }
 	
-	// static test
-	while(1){
-    DAC_Out(n);     // your code to output to the DAC
-    delay(1); // wait 1s (later change this to 1ms)
-    n = (n+1)&0x0F;
-  }
-	
-
   while(1) {              
 		// input from keys to select tone
 		input = Piano_In(); // means a switch is pressed
 		if (input) {
 			// Piano key 0
 			if(input == 0x01) {
-				EnableInterrupts();
-				Sound_Init(C0);
-				delay(60);
+				Sound_Tone(C0);
 			}
 			// Piano key 1
 			else if(input == 0x02) {
-				EnableInterrupts();
-				Sound_Init(D);
-				delay(20);
-
+				Sound_Tone(D);
 			}
 			// Piano key 2
 			else if(input == 0x04) {
-				
-				EnableInterrupts();
-				Sound_Init(E);
-				delay(55);
+				Sound_Tone(E);
 			}
 			// Piano key 3
 			else if(input == 0x08) {
-				EnableInterrupts();
-				Sound_Init(G);
-				delay(5);
+				Sound_Tone(G);
 			}
 		} 
 
 		else {
-			delay(10);	
+			Sound_Off();
 		}	
 		
 		if(previous&&(input==0)){ // just released     
-      DisableInterrupts();    // stop sound
+			Sound_Off();
 		}		
-
+		
+		delay(10);
 		previous = input;		
   }            
 }
@@ -105,7 +96,7 @@ void delay(unsigned long msec){
   while(msec > 0 ) {  // repeat while there are still delay
     count = 16000;    // about 1ms
     while (count > 0) { 
-      count--;
+                count--;
     } // This while loop takes approximately 3 cycles
     msec--;
   }

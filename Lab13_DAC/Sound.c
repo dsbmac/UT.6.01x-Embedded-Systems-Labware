@@ -14,7 +14,8 @@
 unsigned char Index;  
 
 // 3-bit 16-element sine wave
-const unsigned char SineWave[16] = {8, 11, 13, 14, 15, 14, 13, 11, 8, 5, 3, 2, 1, 2, 3, 5};
+//const unsigned char SineWave[16] = {8, 11, 13, 14, 15, 14, 13, 11, 8, 5, 3, 2, 1, 2, 3, 5};
+const unsigned char SineWave[16] ={0, 1, 2, 5, 8, 10, 13, 14, 15, 14, 13, 10, 8, 5, 2, 1};
 
 // basic functions defined at end of startup.s
 void DisableInterrupts(void); // Disable interrupts
@@ -46,21 +47,17 @@ void Sound_Init(unsigned long period){
 // Output: none
 void Sound_Tone(unsigned long period){
 // this routine sets the RELOAD and starts SysTick
-	if (period == 0) {
-		DAC_Out(0);
-	} else {
-		Sound_Init(period);
-	}
+	EnableInterrupts();
+  NVIC_ST_RELOAD_R = period-1;// reload value
 }
-
 
 // **************Sound_Off*********************
 // stop outputing to DAC
 // Output: none
 void Sound_Off(void){
  // this routine stops the sound output
-	DisableInterrupts();
-	Sound_Tone(0);
+	NVIC_ST_RELOAD_R = 0; // clear reload value
+	GPIO_PORTB_DATA_R = 0; // clear Port B output
 }
 
 // Interrupt service routine

@@ -28,7 +28,7 @@ void Piano_Init(void){
   GPIO_PORTE_PCTL_R = 0x00000000;   // 4) PCTL GPIO on PE3-0
   GPIO_PORTE_DIR_R = 0x00;          // 5) PE3-0 in
   GPIO_PORTE_AFSEL_R = 0x00;        // 6) disable alt funct on PE7-0
-  GPIO_PORTE_PUR_R = 0x0F;          // enable pull-up on PE0-3
+  //GPIO_PORTE_PUR_R = 0x0F;          // enable pull-up on PE0-3
   GPIO_PORTE_DEN_R = 0x0F;          // 7) enable digital I/O on PE3-0
 }  
 
